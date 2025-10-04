@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Salimatata Toure — Créatrice UGC Food & Lifestyle Halal</title>
+    <meta
+      name="description"
+      content="Portfolio de Salimatata Toure — UGC food & lifestyle halal, YoFood Festival, Sauve ton Plat. Contact : +223 70-91-11-46"
+    />
+
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* ========== Variables couleurs ========== */
+      :root {
+        --bg: #0a0a0a;
+        --surface: #0f0f12;
+        --muted: #bdbdbd;
+        --white: #ffffff;
+        --accent: #ff4da6; /* rose vif */
+        --accent-soft: #ff7eb9; /* rose poudré */
+        --glass: rgba(255, 255, 255, 0.03);
+        --card-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+      }
+
+      /* ========== Reset ========== */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(180deg, var(--bg), #111116 70%);
+        color: var(--white);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.6;
+      }
+      a {
+        color: inherit;
+      }
+      img,
+      video {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* ========== Header ========== */
+      header {
+        position: fixed;
+        inset: 0 0 auto 0;
+        height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 28px;
+        background: linear-gradient(
+          90deg,
+          rgba(255, 77, 166, 0.06),
+          rgba(255, 126, 185, 0.03)
+        );
+        backdrop-filter: blur(6px);
+        z-index: 1200;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+      }
+      .logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.2rem;
+        color: var(--accent);
+        letter-spacing: 0.4px;
+      }
+      nav {
+        display: flex;
+        gap: 18px;
+        align-items: center;
+      }
+      nav a {
+        color: var(--white);
+        text-decoration: none;
+        font-weight: 500;
+        opacity: 0.9;
+      }
+      nav a:hover {
+        color: var(--accent-soft);
+        text-decoration: none;
+      }
+      .cta-small {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-weight: 600;
+        color: var(--white);
+      }
+      .cta-small:hover {
+        background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+        box-shadow: 0 6px 22px rgba(255, 77, 166, 0.12);
+      }
+
+      /* burger */
+      .burger {
+        display: none;
+        font-size: 1.4rem;
+        color: var(--white);
+        cursor: pointer;
+      }
+
+      /* Mobile Nav Animation */
+      #mobileNav {
+        display: none;
+        position: fixed;
+        right: 14px;
+        top: 72px;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.9),
+          rgba(0, 0, 0, 0.95)
+        );
+        padding: 12px;
+        border-radius: 10px;
+        z-index: 1300;
+        opacity: 0;
+        transform: translateX(100%);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+      #mobileNav.open {
+        display: block;
+        opacity: 1;
+        transform: translateX(0);
+      }
+      #mobileNav a {
+        display: block;
+        padding: 8px;
+        color: white;
+        text-decoration: none;
+      }
+
+      /* ========== Hero ========== */
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        gap: 48px;
+        padding: 120px 6% 60px;
+        background: linear-gradient(
+          180deg,
+          rgba(0, 0, 0, 0.25),
+          rgba(0, 0, 0, 0.6)
+        );
+      }
+      .hero-left {
+        flex: 1;
+        max-width: 720px;
+      }
+      .eyebrow {
+        color: var(--accent-soft);
+        font-weight: 600;
+        margin-bottom: 12px;
+        font-family: "Dancing Script", cursive;
+        font-size: 1.5rem;
+      }
+      .title {
+        font-family: "Playfair Display", serif;
+        font-size: 48px;
+        line-height: 1.02;
+        margin-bottom: 12px;
+        color: var(--white);
+        text-shadow: 0 6px 30px rgba(0, 0, 0, 0.6);
+      }
+      .slogan {
+        color: var(--muted);
+        font-size: 18px;
+        margin-bottom: 18px;
+        max-width: 780px;
+      }
+      /* typing effect */
+      .typing {
+        display: inline-block;
+        border-right: 3px solid var(--accent);
+        white-space: nowrap;
+        overflow: hidden;
+        width: 0;
+        animation: typing 3.5s steps(36, end) forwards,
+          blink 0.75s step-end infinite;
+        color: var(--accent-soft);
+        font-weight: 600;
+        font-size: 20px;
+        margin-bottom: 18px;
+        display: block;
+      }
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 26ch;
+        }
+      }
+      @keyframes blink {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      .hero-cta {
+        display: flex;
+        gap: 14px;
+        margin-top: 18px;
+      }
+      .btn {
+        padding: 12px 20px;
+        border-radius: 999px;
+        border: none;
+        font-weight: 700;
+        cursor: pointer;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+      }
+      .btn-primary {
+        background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+        color: var(--white);
+      }
+      .btn-outline {
+        background: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        color: var(--white);
+      }
+
+      .hero-right {
+        width: 420px;
+        display: flex;
+        justify-content: center;
+      }
+      .portrait {
+        width: 360px;
+        height: 360px;
+        border-radius: 18px;
+        overflow: hidden;
+        border: 4px solid rgba(255, 77, 166, 0.12);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+        transform: translateY(0);
+      }
+      .portrait img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.45s, box-shadow 0.45s;
+      }
+      .portrait:hover img {
+        transform: scale(1.06);
+        box-shadow: 0 30px 60px rgba(255, 77, 166, 0.08);
+      }
+
+      /* ========== Sections ========== */
+      main {
+        margin-top: 16px;
+      }
+      /* Réduction de l'espacement des sections : de 80px à 60px */
+      section {
+        padding: 60px 6%;
+      }
+      .section-title {
+        font-family: "Playfair Display", serif;
+        font-size: 28px;
+        color: var(--accent);
+        margin-bottom: 18px;
+        font-family: "Dancing Script", cursive;
+        font-size: 2.5rem;
+      }
+      .muted {
+        color: var(--muted);
+      }
+
+      /* --- Engagement --- */
+      .engagement {
+        display: flex;
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .eng-card {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.01)
+        );
+        padding: 18px;
+        border-radius: 12px;
+        min-width: 220px;
+        border: 1px solid rgba(255, 255, 255, 0.03);
+        text-align: center;
+      }
+      .eng-card i {
+        font-size: 2rem;
+        color: var(--accent-soft);
+        margin-bottom: 8px;
+      }
+      .eng-card h4 {
+        color: var(--white);
+        margin-bottom: 8px;
+      }
+
+      /* --- Outils & Offres --- */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+      }
+      .card {
+        background: var(--surface);
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: var(--card-shadow);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+      }
+      .card h3 {
+        color: var(--white);
+        margin-bottom: 8px;
+      }
+      .card p {
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .price {
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: var(--accent);
+        margin-top: 8px;
+      }
+
+      /* --- Projets --- */
+      .project-collage {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+        margin-top: 20px;
+      }
+      .project-collage .thumb {
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+      }
+
+      /* --- Portfolio Carousel (Tapis Roulant) --- */
+      .carousel-container {
+        overflow: hidden;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+      }
+      .carousel-track {
+        display: flex;
+        animation: scroll 80s linear infinite; /* Vitesse réduite : de 40s à 80s pour un défilement plus lent */
+        width: 200%; /* Pour boucle infinie avec duplication */
+      }
+      .carousel-track:hover {
+        animation-play-state: paused;
+      }
+      .thumb {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        cursor: pointer;
+        border: 2px solid rgba(255, 255, 255, 0.03);
+        /* Polaroid style pour matcher le brief */
+        background: white;
+        padding: 10px;
+        transform: rotate(var(--rotate, 0deg));
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        flex: 0 0 20%; /* 5 visibles sur desktop */
+        margin-right: 1%;
+      }
+      .thumb img,
+      .thumb video {
+        display: block;
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        transition: transform 0.35s, filter 0.35s;
+      }
+      .thumb:hover img,
+      .thumb:hover video {
+        transform: scale(1.06);
+        filter: brightness(1.02);
+      }
+      .caption {
+        position: absolute;
+        left: 10px;
+        bottom: 10px;
+        padding: 8px 10px;
+        border-radius: 8px;
+        background: linear-gradient(
+          90deg,
+          rgba(10, 10, 10, 0.7),
+          rgba(10, 10, 10, 0.3)
+        );
+        color: var(--white);
+        font-size: 0.9rem;
+      }
+      @keyframes scroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        } /* Boucle infinie avec duplication */
+      }
+      /* Responsive pour mobile : 3 visibles */
+      @media (max-width: 720px) {
+        .thumb {
+          flex: 0 0 32%;
+          margin-right: 2%;
+        }
+        .carousel-track {
+          width: 200%; /* Garde 200% pour duplication */
+        }
+        @keyframes scroll {
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+      }
+
+      /* ========== Lightbox Modal ========== */
+      .modal {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.85);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        padding: 24px;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s;
+      }
+      .modal.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .modal-content {
+        max-width: 1100px;
+        width: 100%;
+        border-radius: 12px;
+        overflow: hidden;
+        background: var(--surface);
+        display: grid;
+        grid-template-columns: 1fr 340px;
+        gap: 12px;
+      }
+      .modal-media {
+        background: #000;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-media img,
+      .modal-media video {
+        max-width: 100%;
+        max-height: 80vh;
+        object-fit: contain;
+      }
+      .modal-meta {
+        padding: 18px;
+      }
+      .modal-meta h3 {
+        margin-bottom: 8px;
+        color: var(--accent);
+      }
+      .modal-meta p {
+        color: var(--muted);
+        margin-bottom: 14px;
+      }
+      .modal-actions a {
+        display: inline-block;
+        margin-right: 8px;
+        padding: 10px 14px;
+        border-radius: 9px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+        color: #fff;
+        font-weight: 600;
+        text-decoration: none;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 18px;
+        right: 20px;
+        font-size: 22px;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      /* ========== Footer ========== */
+      footer {
+        padding: 28px 6%;
+        background: linear-gradient(180deg, #080808, #0b0b0b);
+        color: var(--muted);
+        text-align: center;
+        border-top: 1px solid rgba(255, 255, 255, 0.03);
+      }
+      .thanks {
+        font-family: "Dancing Script", cursive;
+        font-size: 2rem;
+        color: var(--accent);
+        margin-bottom: 10px;
+      }
+
+      /* ========== Responsive ========== */
+      @media (max-width: 980px) {
+        .hero {
+          padding: 110px 6% 40px;
+          gap: 28px;
+        }
+        .portrait {
+          width: 300px;
+          height: 300px;
+        }
+        .title {
+          font-size: 36px;
+        }
+      }
+      @media (max-width: 720px) {
+        nav {
+          display: none;
+        }
+        .burger {
+          display: block;
+        }
+        .hero {
+          flex-direction: column;
+          align-items: center;
+          padding: 110px 6% 40px;
+        }
+        .hero-left,
+        .hero-right {
+          max-width: 100%;
+          width: 100%;
+        }
+        .modal-content {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <div class="logo">Salimatata.</div>
+
+      <nav id="mainNav" role="navigation" aria-label="Navigation principale">
+        <a href="#home">Home</a>
+        <a href="#engagement">Engagement</a>
+        <a href="#outils">Outils & Offres</a>
+        <a href="#projets">Projets</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div
+        class="burger"
+        id="burgerBtn"
+        aria-label="Ouvrir le menu mobile"
+        role="button"
+        tabindex="0"
+      >
+        <i class="fa fa-bars"></i>
+      </div>
+    </header>
+
+    <!-- MOBILE NAV -->
+    <div id="mobileNav">
+      <a href="#home">Home</a>
+      <a href="#engagement">Engagement</a>
+      <a href="#outils">Outils & Offres</a>
+      <a href="#projets">Projets</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <main>
+      <!-- HERO -->
+      <section id="home" class="hero" data-aos="fade-up">
+        <div class="hero-left">
+          <div class="eyebrow">Créatrice UGC — Bamako</div>
+          <h1 class="title">Salimatata Toure</h1>
+          <div class="typing" aria-hidden="true">
+            Créatrice UGC Food & Lifestyle Halal
+          </div>
+          <p class="slogan muted">
+            Je suis Salimatata Touré, connue sous le pseudo Jévie, une
+            entrepreneure de 26 ans basée à Bamako (Mali). Fondatrice du
+            <strong>YoFood Festival</strong> et créatrice de l’émission
+            culinaire <strong>« Sauve ton Plat »</strong>. Je suis passionnée
+            par la création de contenus food & lifestyle. Mon approche ? Être
+            moi-même, sincère, naturelle et pudique. Mon contenu respecte les
+            valeurs de l’Islam et reflète un style de vie vrai, authentique et
+            connecté à la réalité africaine.
+          </p>
+
+          <div class="hero-cta">
+            <a
+              class="btn btn-primary"
+              href="#contact"
+              aria-label="Travailler ensemble - Aller au formulaire de contact"
+              >Travailler ensemble</a
+            >
+            <a
+              class="btn btn-outline"
+              href="#portfolio"
+              aria-label="Voir mon travail - Aller à la section portfolio"
+              >Voir mon travail</a
+            >
+          </div>
+
+          <div style="margin-top: 18px">
+            <small class="muted">Téléphone</small><br />
+            <strong>+223 70-91-11-46</strong> —
+            <small class="muted">Email</small>
+            <strong>salimatatoure405@gmail.com</strong>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="portrait" data-aos="zoom-in">
+            <img
+              src="media/4.JPG"
+              alt="Portrait professionnel de Salimatata Toure, créatrice UGC food et lifestyle halal à Bamako"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- ENGAGEMENT -->
+      <section id="engagement" data-aos="fade-up">
+        <h2 class="section-title">Mon Engagement</h2>
+        <div class="engagement">
+          <div class="eng-card card" data-aos="fade-right">
+            <i class="fas fa-heart" aria-hidden="true"></i>
+            <h4>Respect des valeurs musulmanes</h4>
+          </div>
+          <div class="eng-card card" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-ban" aria-hidden="true"></i>
+            <h4>Sans nudité, sans vulgarité</h4>
+          </div>
+          <div class="eng-card card" data-aos="fade-left" data-aos-delay="200">
+            <i class="fas fa-leaf" aria-hidden="true"></i>
+            <h4>Plaisant, naturel et ancré dans la vie réelle</h4>
+          </div>
+          <div class="eng-card card" data-aos="fade-up" data-aos-delay="300">
+            <i class="fas fa-star" aria-hidden="true"></i>
+            <h4>Authentique</h4>
+          </div>
+        </div>
+      </section>
+
+      <!-- OUTILS & OFFRES -->
+      <section id="outils" data-aos="fade-up">
+        <h2 class="section-title">Outils & Offres</h2>
+        <p class="muted">
+          Montage avec CapCut, livraison HD, formats prêts pour TikTok /
+          Instagram / YouTube. Possibilité d’adapter au style et au ton de la
+          marque.
+        </p>
+
+        <div class="grid" style="margin-top: 20px">
+          <div class="card" data-aos="zoom-in" data-aos-delay="60">
+            <h3>Offre Mensuel</h3>
+            <p class="muted">
+              4 vidéos/mois (1 par semaine) — formats adaptés TikTok/Instagram.
+            </p>
+            <div class="price">180€ / mois</div>
+          </div>
+
+          <div class="card" data-aos="zoom-in" data-aos-delay="120">
+            <h3>Pack Basique</h3>
+            <p class="muted">1 vidéo UGC (15-30s) — montage + sous-titres.</p>
+            <div class="price">50€</div>
+          </div>
+
+          <div class="card" data-aos="zoom-in" data-aos-delay="180">
+            <h3>Pack Sur-mesure</h3>
+            <p class="muted">
+              Vidéo + photos + consulting éditorial — devis personnalisé.
+            </p>
+            <div class="price">Sur devis</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJETS -->
+      <section id="projets" data-aos="fade-up">
+        <h2 class="section-title">Projets Phares</h2>
+        <div class="grid">
+          <div class="card" data-aos="fade-up" data-aos-delay="80">
+            <h3>Project 01 : YoFood Festival</h3>
+            <p class="muted">
+              Animatrice et fondatrice. Émission diffusée en live sur YouTube
+              avec des cuts sur réseaux sociaux.
+            </p>
+            <div class="project-collage">
+              <div class="thumb" data-aos="fade-up" data-aos-delay="0">
+                <img
+                  src="media/pp11.JPG"
+                  alt="Événement culinaire YoFood Festival avec chefs maliens"
+                  loading="lazy"
+                />
+              </div>
+              <div class="thumb" data-aos="fade-up" data-aos-delay="100">
+                <img
+                  src="media/pp12.jpg"
+                  alt="Chef participant au YoFood Festival à Bamako"
+                  loading="lazy"
+                />
+              </div>
+              <div class="thumb" data-aos="fade-up" data-aos-delay="200">
+                <img
+                  src="media/pp13.jpg"
+                  alt="Public et animations lors du YoFood Festival"
+                  loading="lazy"
+                />
+              </div>
+              <div class="thumb" data-aos="fade-up" data-aos-delay="300">
+                <img
+                  src="media/pp14.jpg"
+                  alt="Démonstration de cuisine au YoFood Festival"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <p style="margin-top: 8px">
+              <a
+                href="https://www.facebook.com/Yofood1"
+                target="_blank"
+                rel="noopener"
+                style="color: var(--accent)"
+                >Voir la page événement</a
+              >
+            </p>
+          </div>
+
+          <div class="card" data-aos="fade-up" data-aos-delay="140">
+            <h3>Project 02 :</h3>
+            <p class="muted">
+              Série vidéo : conseils et astuces pour sauver des plats ratés,
+              recettes modestes et adaptées aux familles musulmanes.
+            </p>
+            <div class="project-collage">
+              <div class="thumb" data-aos="fade-up" data-aos-delay="0">
+                <img
+                  src="media/pp24.JPG"
+                  alt="Cuisine de base pour recettes halal dans Sauve ton Plat"
+                  loading="lazy"
+                />
+              </div>
+              <div class="thumb" data-aos="fade-up" data-aos-delay="100">
+                <img
+                  src="media/pp21.JPG"
+                  alt="Salimatata Toure présentant une astuce cuisine"
+                  loading="lazy"
+                />
+              </div>
+              <div class="thumb" data-aos="fade-up" data-aos-delay="200">
+                <img
+                  src="media/pp22.JPG"
+                  alt="Plat sauvé avant/après dans l'émission Sauve ton Plat"
+                  loading="lazy"
+                />
+              </div>
+              <div class="thumb" data-aos="fade-up" data-aos-delay="300">
+                <img
+                  src="media/pp23.JPG"
+                  alt="Styling d'un plat halal simple et appétissant"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <p style="margin-top: 8px">
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener"
+                style="color: var(--accent)"
+                >Voir l’épisode (YouTube)</a
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PORTFOLIO (CAROUSEL) -->
+      <section id="portfolio" data-aos="fade-up">
+        <h2 class="section-title">Portfolio Visuel</h2>
+        <p class="muted">
+          Galerie en tapis roulant : 18+ photos qui défilent en boucle (5
+          visibles). Clique sur une vignette pour ouvrir en grand.
+        </p>
+
+        <div class="carousel-container" id="carousel">
+          <div class="carousel-track" id="carouselTrack">
+            <!-- Contenu original (18 items) -->
+            <div
+              class="thumb"
+              style="--rotate: -2deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?african,food"
+              data-caption="YoFood — Street food Mali"
+              data-link="https://www.facebook.com/yofoodfestival"
+            >
+              <img
+                src=""
+                alt="Street food authentique malienne lors du YoFood Festival"
+                loading="lazy"
+              />
+              <div class="caption">YoFood — Street food</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 1deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?cooking,portrait"
+              data-caption="Sauve ton Plat — avant/après"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?cooking,portrait"
+                alt="Transformation avant/après d'un plat raté dans Sauve ton Plat"
+                loading="lazy"
+              />
+              <div class="caption">Sauve ton Plat — Avant/Après</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -1deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?plating,food"
+              data-caption="Food styling et recettes"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?plating,food"
+                alt="Styling professionnel d'un plat halal pour contenu UGC"
+                loading="lazy"
+              />
+              <div class="caption">Food styling</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 3deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?festival,people,food"
+              data-caption="YoFood Festival — moments"
+              data-link="https://www.facebook.com/yofoodfestival"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?festival,food"
+                alt="Moments joyeux et animations du YoFood Festival"
+                loading="lazy"
+              />
+              <div class="caption">Moments YoFood</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -3deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?kitchen,recipe"
+              data-caption="Recettes rapides pour familles"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?kitchen,recipe"
+                alt="Recette maison rapide et halal pour famille malienne"
+                loading="lazy"
+              />
+              <div class="caption">Recettes maison</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 2deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?influencer,content"
+              data-caption="UGC : test produit & storytelling"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?influencer,content"
+                alt="Test produit UGC avec storytelling authentique"
+                loading="lazy"
+              />
+              <div class="caption">Test produit</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -1.5deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?african,woman,food"
+              data-caption="Lifestyle halal quotidien"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?african,woman,food"
+                alt="Lifestyle quotidien halal avec éléments food maliens"
+                loading="lazy"
+              />
+              <div class="caption">Lifestyle halal</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 0.5deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?cooking,halal"
+              data-caption="Recette step-by-step"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?cooking,halal"
+                alt="Étapes détaillées d'une recette halal simple"
+                loading="lazy"
+              />
+              <div class="caption">Recette simple</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -2.5deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?festival,mali"
+              data-caption="Événement YoFood"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?festival,mali"
+                alt="Événementiel du YoFood Festival à Bamako"
+                loading="lazy"
+              />
+              <div class="caption">YoFood event</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 1.5deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?food,styling"
+              data-caption="Styling produit"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?food,styling"
+                alt="Styling produit pour contenu lifestyle halal"
+                loading="lazy"
+              />
+              <div class="caption">Produit styling</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -0.5deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?recipe,african"
+              data-caption="Astuces cuisine"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?recipe,african"
+                alt="Astuces cuisine adaptées à la culture africaine"
+                loading="lazy"
+              />
+              <div class="caption">Astuces cuisine</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 2.5deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?lifestyle,food"
+              data-caption="Contenu UGC quotidien"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?lifestyle,food"
+                alt="Contenu UGC quotidien food et lifestyle halal"
+                loading="lazy"
+              />
+              <div class="caption">UGC quotidien</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -2deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?event,malien"
+              data-caption="Événement culinaire"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?event,malien"
+                alt="Événement culinaire local à Bamako"
+                loading="lazy"
+              />
+              <div class="caption">Événement local</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 1deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?chef,woman"
+              data-caption="Portrait chef"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?chef,woman"
+                alt="Portrait de chef femme lors d'un atelier"
+                loading="lazy"
+              />
+              <div class="caption">Portrait chef</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -1deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?recipe,halal"
+              data-caption="Recette halal"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?recipe,halal"
+                alt="Préparation d'une recette halal traditionnelle"
+                loading="lazy"
+              />
+              <div class="caption">Recette halal</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 3deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?festival,food"
+              data-caption="Festival food"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?festival,food"
+                alt="Stands de nourriture au festival"
+                loading="lazy"
+              />
+              <div class="caption">Festival food</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -3deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?styling,plate"
+              data-caption="Styling plat"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?styling,plate"
+                alt="Styling artistique d'un plat"
+                loading="lazy"
+              />
+              <div class="caption">Styling plat</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 2deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?ugc,content"
+              data-caption="UGC contenu"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?ugc,content"
+                alt="Contenu UGC authentique"
+                loading="lazy"
+              />
+              <div class="caption">UGC contenu</div>
+            </div>
+
+            <!-- Duplication pour boucle infinie -->
+            <div
+              class="thumb"
+              style="--rotate: -2deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?african,food"
+              data-caption="YoFood — Street food Mali"
+              data-link="https://www.facebook.com/yofoodfestival"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?african,food"
+                alt="Street food authentique malienne lors du YoFood Festival"
+                loading="lazy"
+              />
+              <div class="caption">YoFood — Street food</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 1deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?cooking,portrait"
+              data-caption="Sauve ton Plat — avant/après"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?cooking,portrait"
+                alt="Transformation avant/après d'un plat raté dans Sauve ton Plat"
+                loading="lazy"
+              />
+              <div class="caption">Sauve ton Plat — Avant/Après</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -1deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?plating,food"
+              data-caption="Food styling et recettes"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?plating,food"
+                alt="Styling professionnel d'un plat halal pour contenu UGC"
+                loading="lazy"
+              />
+              <div class="caption">Food styling</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 3deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?festival,people,food"
+              data-caption="YoFood Festival — moments"
+              data-link="https://www.facebook.com/yofoodfestival"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?festival,food"
+                alt="Moments joyeux et animations du YoFood Festival"
+                loading="lazy"
+              />
+              <div class="caption">Moments YoFood</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -3deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?kitchen,recipe"
+              data-caption="Recettes rapides pour familles"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?kitchen,recipe"
+                alt="Recette maison rapide et halal pour famille malienne"
+                loading="lazy"
+              />
+              <div class="caption">Recettes maison</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 2deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?influencer,content"
+              data-caption="UGC : test produit & storytelling"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?influencer,content"
+                alt="Test produit UGC avec storytelling authentique"
+                loading="lazy"
+              />
+              <div class="caption">Test produit</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -1.5deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?african,woman,food"
+              data-caption="Lifestyle halal quotidien"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?african,woman,food"
+                alt="Lifestyle quotidien halal avec éléments food maliens"
+                loading="lazy"
+              />
+              <div class="caption">Lifestyle halal</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 0.5deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?cooking,halal"
+              data-caption="Recette step-by-step"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?cooking,halal"
+                alt="Étapes détaillées d'une recette halal simple"
+                loading="lazy"
+              />
+              <div class="caption">Recette simple</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -2.5deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?festival,mali"
+              data-caption="Événement YoFood"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?festival,mali"
+                alt="Événementiel du YoFood Festival à Bamako"
+                loading="lazy"
+              />
+              <div class="caption">YoFood event</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 1.5deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?food,styling"
+              data-caption="Styling produit"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?food,styling"
+                alt="Styling produit pour contenu lifestyle halal"
+                loading="lazy"
+              />
+              <div class="caption">Produit styling</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -0.5deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?recipe,african"
+              data-caption="Astuces cuisine"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?recipe,african"
+                alt="Astuces cuisine adaptées à la culture africaine"
+                loading="lazy"
+              />
+              <div class="caption">Astuces cuisine</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 2.5deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?lifestyle,food"
+              data-caption="Contenu UGC quotidien"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?lifestyle,food"
+                alt="Contenu UGC quotidien food et lifestyle halal"
+                loading="lazy"
+              />
+              <div class="caption">UGC quotidien</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -2deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?event,malien"
+              data-caption="Événement culinaire"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?event,malien"
+                alt="Événement culinaire local à Bamako"
+                loading="lazy"
+              />
+              <div class="caption">Événement local</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 1deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?chef,woman"
+              data-caption="Portrait chef"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?chef,woman"
+                alt="Portrait de chef femme lors d'un atelier"
+                loading="lazy"
+              />
+              <div class="caption">Portrait chef</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -1deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?recipe,halal"
+              data-caption="Recette halal"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?recipe,halal"
+                alt="Préparation d'une recette halal traditionnelle"
+                loading="lazy"
+              />
+              <div class="caption">Recette halal</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 3deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?festival,food"
+              data-caption="Festival food"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?festival,food"
+                alt="Stands de nourriture au festival"
+                loading="lazy"
+              />
+              <div class="caption">Festival food</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: -3deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?styling,plate"
+              data-caption="Styling plat"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?styling,plate"
+                alt="Styling artistique d'un plat"
+                loading="lazy"
+              />
+              <div class="caption">Styling plat</div>
+            </div>
+
+            <div
+              class="thumb"
+              style="--rotate: 2deg"
+              data-type="image"
+              data-src="https://source.unsplash.com/800x800/?ugc,content"
+              data-caption="UGC contenu"
+              data-link="#"
+            >
+              <img
+                src="https://source.unsplash.com/400x400/?ugc,content"
+                alt="Contenu UGC authentique"
+                loading="lazy"
+              />
+              <div class="caption">UGC contenu</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section id="contact" data-aos="fade-up">
+        <h2 class="section-title">Me Contacter</h2>
+        <p class="muted">
+          Disponible pour collaborations, sponsorships et projets événementiels.
+        </p>
+
+        <!-- Formulaire mailto simple (remplacable par form backend si tu le souhaites) -->
+        <form
+          id="contactForm"
+          style="
+            max-width: 760px;
+            margin: 18px auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+          "
+        >
+          <label for="name" class="sr-only">Votre nom</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Votre nom"
+            required
+            style="padding: 14px; border-radius: 8px; border: none"
+          />
+          <label for="email" class="sr-only">Votre email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Votre email"
+            required
+            style="padding: 14px; border-radius: 8px; border: none"
+          />
+          <label for="subject" class="sr-only">Objet</label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            placeholder="Objet"
+            style="padding: 14px; border-radius: 8px; border: none"
+          />
+          <label for="phone" class="sr-only">Téléphone (optionnel)</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            placeholder="Téléphone (optionnel)"
+            style="padding: 14px; border-radius: 8px; border: none"
+          />
+          <label for="message" class="sr-only">Votre message</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Votre message..."
+            rows="6"
+            style="
+              grid-column: 1 / -1;
+              padding: 14px;
+              border-radius: 8px;
+              border: none;
+            "
+          ></textarea>
+
+          <div
+            style="
+              grid-column: 1 / -1;
+              display: flex;
+              gap: 12px;
+              align-items: center;
+            "
+          >
+            <button
+              type="submit"
+              class="btn btn-primary"
+              aria-label="Envoyer le message par email"
+            >
+              Envoyer (email)
+            </button>
+            <a
+              class="btn btn-outline"
+              id="waBtn"
+              href="https://wa.me/22370911146"
+              target="_blank"
+              rel="noopener"
+              aria-label="Contacter via WhatsApp"
+              >WhatsApp</a
+            >
+            <small class="muted" style="margin-left: 8px"
+              >ou écris-moi : <strong>salimatatoure405@gmail.com</strong></small
+            >
+          </div>
+        </form>
+
+        <div style="text-align: center; margin-top: 10px">
+          <div class="social-icons" aria-label="Réseaux sociaux">
+            <a
+              href="https://www.instagram.com/salisavour"
+              target="_blank"
+              rel="noopener"
+              aria-label="Instagram de Salimatata Toure"
+              ><i
+                class="fab fa-instagram"
+                style="color: var(--accent); font-size: 20px"
+              ></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/salimatata-toure"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn de Salimatata Toure"
+              ><i
+                class="fab fa-linkedin"
+                style="color: var(--accent); font-size: 20px"
+              ></i
+            ></a>
+            <a
+              href="https://www.facebook.com/yofoodfestival"
+              target="_blank"
+              rel="noopener"
+              aria-label="Facebook YoFood Festival"
+              ><i
+                class="fab fa-facebook"
+                style="color: var(--accent); font-size: 20px"
+              ></i
+            ></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- LIGHTBOX MODAL -->
+    <div
+      id="modal"
+      class="modal"
+      role="dialog"
+      aria-hidden="true"
+      aria-modal="true"
+    >
+      <div class="modal-close" id="modalClose" aria-label="Fermer la modale">
+        <i class="fa fa-times"></i>
+      </div>
+      <div
+        class="modal-content"
+        role="document"
+        aria-label="Aperçu du portfolio"
+      >
+        <div class="modal-media" id="modalMedia">
+          <!-- image or video injected here -->
+        </div>
+        <div class="modal-meta">
+          <h3 id="modalTitle">Titre</h3>
+          <p id="modalDesc">Description</p>
+          <div class="modal-actions" id="modalActions">
+            <!-- link buttons injected here -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="thanks">Thanks for Watching! ✨</div>
+      <div
+        style="
+          max-width: 1100px;
+          margin: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          align-items: center;
+        "
+      >
+        <div class="muted">
+          © <span id="year"></span> Salimatata Toure — Tous droits réservés.
+        </div>
+        <div class="muted">
+          Basée à Bamako — Contact : +223 70-91-11-46 —
+          <a
+            href="mailto:salimatatoure405@gmail.com"
+            style="color: var(--accent)"
+            >salimatatoure405@gmail.com</a
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- ========== Scripts ========== -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 800,
+        easing: "ease-out-quart",
+        once: true,
+        offset: 100, // Pour stagger scroll
+      });
+
+      // Year in footer
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // Mobile burger avec animation et clavier
+      const burger = document.getElementById("burgerBtn");
+      const mobileNav = document.getElementById("mobileNav");
+      function toggleMobileNav() {
+        mobileNav.classList.toggle("open");
+      }
+      burger.addEventListener("click", toggleMobileNav);
+      burger.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          toggleMobileNav();
+        }
+      });
+      // close mobile nav when click a link
+      mobileNav
+        .querySelectorAll("a")
+        .forEach((a) =>
+          a.addEventListener("click", () => mobileNav.classList.remove("open"))
+        );
+
+      // Simple contact form -> mailto fallback
+      document
+        .getElementById("contactForm")
+        ?.addEventListener("submit", function (e) {
+          e.preventDefault();
+          const f = e.currentTarget;
+          const name = encodeURIComponent(f.name.value || "");
+          const email = encodeURIComponent(f.email.value || "");
+          const subject = encodeURIComponent(
+            f.subject.value || "Demande via portfolio"
+          );
+          const phone = encodeURIComponent(f.phone.value || "");
+          const message = encodeURIComponent(f.message.value || "");
+          const body = `Nom: ${name}%0AEmail: ${email}%0ATéléphone: ${phone}%0A%0A${message}`;
+          // opens default mail app
+          window.location.href = `mailto:salimatatoure405@gmail.com?subject=${subject}&body=${body}`;
+        });
+
+      // Duplication pour boucle infinie du carousel
+      const carouselTrack = document.getElementById("carouselTrack");
+      const originalContent = carouselTrack.innerHTML;
+      carouselTrack.innerHTML += originalContent; // Duplique le contenu
+
+      // LIGHTBOX modal logic pour carousel
+      const modal = document.getElementById("modal");
+      const modalMedia = document.getElementById("modalMedia");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalDesc = document.getElementById("modalDesc");
+      const modalActions = document.getElementById("modalActions");
+      const modalClose = document.getElementById("modalClose");
+
+      function openModal({ type, src, caption, link }) {
+        modalMedia.innerHTML = "";
+        modalActions.innerHTML = "";
+        modalTitle.textContent = caption || "";
+        modalDesc.textContent = "";
+        if (type === "image") {
+          const img = document.createElement("img");
+          img.src = src;
+          img.alt = caption || "Image";
+          modalMedia.appendChild(img);
+        } else if (type === "video") {
+          const vid = document.createElement("video");
+          vid.src = src;
+          vid.controls = true;
+          modalMedia.appendChild(vid);
+        }
+        if (link) {
+          const a = document.createElement("a");
+          a.href = link;
+          a.target = "_blank";
+          a.rel = "noopener";
+          a.textContent = "Voir la source";
+          a.className = "";
+          modalActions.appendChild(a);
+        }
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeModal() {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+        modalMedia.innerHTML = "";
+      }
+      modalClose.addEventListener("click", closeModal);
+      modalClose.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          closeModal();
+        }
+      });
+      modal.addEventListener("click", function (e) {
+        if (e.target === modal) closeModal();
+      });
+
+      // attach open modal on carousel thumbs
+      document.addEventListener("click", (e) => {
+        if (e.target.closest(".thumb")) {
+          const thumb = e.target.closest(".thumb");
+          const type = thumb.getAttribute("data-type") || "image";
+          const src =
+            thumb.getAttribute("data-src") ||
+            thumb.querySelector("img, video")?.src;
+          const caption = thumb.getAttribute("data-caption") || "";
+          const link = thumb.getAttribute("data-link") || "";
+          openModal({ type, src, caption, link });
+        }
+      });
+
+      // close modal with escape key
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeModal();
+      });
+    </script>
+
+    <style>
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </body>
+</html>
