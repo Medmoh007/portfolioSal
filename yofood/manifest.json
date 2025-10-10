@@ -1,0 +1,152 @@
+{
+  "name": "Yo Food - Émission Culinaire Africaine",
+  "short_name": "Yo Food",
+  "description": "Émission culinaire immersive valorisant les talents africains. Découvrez des recettes authentiques, des chefs talentueux et la richesse gastronomique de l'Afrique.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#00a650",
+  "theme_color": "#ff6b00",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["food", "entertainment", "education", "lifestyle"],
+  "iarc_rating_id": "e58bcfb3-91a1-5b1d-8c5a-aaaa2d32f9c1",
+  
+  "icons": [
+    {
+      "src": "/assets/icons/icon-72x72.png",
+      "sizes": "72x72",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-96x96.png",
+      "sizes": "96x96",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-128x128.png",
+      "sizes": "128x128",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-144x144.png",
+      "sizes": "144x144",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-152x152.png",
+      "sizes": "152x152",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-384x384.png",
+      "sizes": "384x384",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+
+  "screenshots": [
+    {
+      "src": "/assets/screenshots/mobile-1.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Page d'accueil Yo Food sur mobile"
+    },
+    {
+      "src": "/assets/screenshots/mobile-2.png",
+      "sizes": "375x667",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Boutique Yo Food sur mobile"
+    },
+    {
+      "src": "/assets/screenshots/desktop-1.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Page d'accueil Yo Food sur desktop"
+    }
+  ],
+
+  "shortcuts": [
+    {
+      "name": "Nos Émissions",
+      "short_name": "Émissions",
+      "description": "Découvrez nos dernières émissions culinaires",
+      "url": "/#emissions",
+      "icons": [
+        {
+          "src": "/assets/icons/shortcut-video.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Boutique",
+      "short_name": "Boutique",
+      "description": "Achetez nos tabliers et goodies Yo Food",
+      "url": "/#shop",
+      "icons": [
+        {
+          "src": "/assets/icons/shortcut-shop.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Contactez-nous pour participer à l'émission",
+      "url": "/#contact",
+      "icons": [
+        {
+          "src": "/assets/icons/shortcut-contact.png",
+          "sizes": "96x96",
+          "type": "image/png"
+        }
+      ]
+    }
+  ],
+
+  "related_applications": [
+    {
+      "platform": "webapp",
+      "url": "https://yofood.com/manifest.json"
+    }
+  ],
+
+  "prefer_related_applications": false,
+
+  "features": [
+    "Cross Platform",
+    "fast",
+    "simple",
+    "Offline Functionality"
+  ],
+
+  "edge_side_panel": {
+    "preferred_width": 400
+  }
+}

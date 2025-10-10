@@ -1,0 +1,2593 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Yo Food! Émission culinaire immersive : valoriser les talents africains. Présence pro pour attirer partenaires et sponsors."
+    />
+    <meta
+      name="keywords"
+      content="Yo Food, émission culinaire, Afrique, gastronomie, cuisine, tabliers, partenaires, chefs africains, recettes africaines"
+    />
+    <meta name="author" content="Yo Food Production" />
+    <title>Yo Food - Vous cuisinez, on vous fait briller</title>
+
+    <!-- Fonts & Icons -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      :root {
+        --vert-vif: #00a650;
+        --vert-fonce: #008c45;
+        --vert-transparent: rgba(0, 166, 80, 0.9);
+        --orange-chaud: #ff6b00;
+        --orange-fonce: #e55a00;
+        --blanc: #ffffff;
+        --noir: #1a1a1a;
+        --gris-fonce: #333333;
+        --gris-moyen: #666666;
+        --gris-clair: #f5f5f5;
+        --shadow: 0 8px 30px rgba(0, 166, 80, 0.15);
+        --shadow-hover: 0 12px 40px rgba(0, 166, 80, 0.25);
+        --radius: 16px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        height: 100%;
+        font-family: "Poppins", system-ui, -apple-system, sans-serif;
+        background: var(--blanc);
+        color: var(--gris-fonce);
+        -webkit-font-smoothing: antialiased;
+        scroll-behavior: smooth;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+        transition: var(--transition);
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* Header transparent qui fusionne avec l'accueil */
+      header {
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 1200;
+        background: var(--vert-transparent 0.5);
+        backdrop-filter: blur(15px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        transition: var(--transition);
+      }
+
+      header.scrolled {
+        background: var(--vert-transparent);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .container {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 0 6px;
+      }
+
+      .header-grid {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        padding: 5px 0;
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .brand img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--orange-chaud);
+        box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+      }
+
+      .brand h1 {
+        font-size: 1.6rem;
+        color: var(--blanc);
+        font-weight: 800;
+      }
+
+      .brand span {
+        color: var(--orange-chaud);
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+      }
+
+      nav ul {
+        display: flex;
+        gap: 28px;
+        list-style: none;
+      }
+
+      nav a {
+        font-weight: 600;
+        color: var(--blanc);
+        padding: 2px 4px;
+        border-radius: var(--radius);
+        position: relative;
+        transition: var(--transition);
+        font-size: 0.95rem;
+      }
+
+      nav a:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        width: 0;
+        height: 2px;
+        background: var(--orange-chaud);
+        transition: var(--transition);
+        transform: translateX(-50%);
+      }
+
+      nav a.active,
+      nav a:hover {
+        color: var(--orange-chaud);
+      }
+
+      nav a.active:before,
+      nav a:hover:before {
+        width: 80%;
+      }
+
+      .hamburger {
+        display: none;
+        cursor: pointer;
+        background: transparent;
+        color: var(--blanc);
+        width: 40px;
+        height: 40px;
+        border-radius: var(--radius);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+      }
+
+      .hamburger:hover {
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .cart-icon {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        cursor: pointer;
+        position: relative;
+        background: rgba(255, 255, 255, 0.15);
+        padding: 8px 14px;
+        border-radius: var(--radius);
+        transition: var(--transition);
+        color: var(--blanc);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .cart-icon:hover {
+        background: var(--orange-chaud);
+        transform: translateY(-2px);
+      }
+
+      .cart-count {
+        position: absolute;
+        top: -6px;
+        right: -6px;
+        background: var(--orange-chaud);
+        color: var(--blanc);
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.7rem;
+        font-weight: 700;
+      }
+
+      /* Hero avec fond vert transparent sur image de plat */
+      main {
+        margin-top: 0;
+      }
+
+      .hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 24px;
+        background: linear-gradient(
+            135deg,
+            rgba(0, 166, 80, 0.55) 0%,
+            rgba(0, 140, 69, 0.15) 100%
+          ),
+          url("assets/img/acc.png") center/cover no-repeat;
+        color: var(--blanc);
+        position: relative;
+      }
+
+      .hero-inner {
+        max-width: 1000px;
+        padding: 80px 40px;
+        background: rgba(255, 255, 255, 0.75);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-hover);
+        color: var(--noir);
+        backdrop-filter: blur(10px);
+        animation: fadeInUp 0.8s ease forwards;
+        margin-top: 60px;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 10px 24px;
+        background: var(--orange-chaud);
+        color: var(--blanc);
+        border-radius: 50px;
+        font-weight: 700;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+      }
+
+      .hero h2 {
+        font-family: "Montserrat", sans-serif;
+        font-size: 3.2rem;
+        color: var(--vert-vif);
+        margin: 16px 0;
+        line-height: 1.1;
+      }
+
+      .hero p {
+        color: var(--gris-moyen);
+        margin-top: 16px;
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-cta {
+        margin-top: 32px;
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        background: linear-gradient(
+          135deg,
+          var(--orange-chaud) 0%,
+          var(--orange-fonce) 100%
+        );
+        color: var(--blanc);
+        padding: 16px 32px;
+        border-radius: 50px;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        font-size: 1rem;
+        box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .btn:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -15%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        transition: 0.2s;
+      }
+
+      .btn:hover {
+        transform: translateY(-20px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .btn:hover:before {
+        left: 100%;
+      }
+
+      .btn.secondary {
+        background: transparent;
+        border: 2px solid var(--vert-vif);
+        color: var(--vert-vif);
+        box-shadow: none;
+      }
+
+      .btn.secondary:hover {
+        background: var(--vert-vif);
+        color: var(--blanc);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 25px rgba(0, 166, 80, 0.3);
+      }
+
+      /* Sections */
+      section {
+        padding: 100px 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 48px;
+      }
+
+      .section-title h2 {
+        font-family: "Montserrat", sans-serif;
+        color: var(--vert-vif);
+        font-size: 2.8rem;
+        margin-bottom: 16px;
+      }
+
+      .lead {
+        text-align: center;
+        color: var(--gris-moyen);
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 1.1rem;
+      }
+
+      /* Sections alternées */
+      .section-white {
+        background: var(--beige);
+      }
+
+      .section-green {
+        background: linear-gradient(
+          135deg,
+          var(--vert-vif) 0%,
+          var(--vert-fonce) 100%
+        );
+        color: var(--blanc);
+      }
+
+      .section-green .section-title h2,
+      .section-green .lead {
+        color: var(--blanc);
+      }
+
+      .section-orange {
+        background: linear-gradient(
+          135deg,
+          var(--orange-chaud) 0%,
+          var(--orange-fonce) 100%
+        );
+        color: var(--blanc);
+      }
+
+      .section-orange .section-title h2,
+      .section-orange .lead {
+        color: var(--blanc);
+      }
+
+      /* About */
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 60px;
+        align-items: center;
+        margin-top: 40px;
+        margin: 5px;
+      }
+
+      .about-img {
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow-hover);
+        transform: rotate(-2deg);
+        transition: var(--transition);
+      }
+
+      .about-img:hover {
+        transform: rotate(0deg) scale(1.02);
+      }
+
+      .about-img img {
+        width: 100%;
+        height: 500px;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .about-img:hover img {
+        transform: scale(1.1);
+      }
+
+      .about-text h3 {
+        color: var(--vert-vif);
+        margin-bottom: 20px;
+        font-size: 2rem;
+      }
+
+      .about-text p {
+        color: var(--gris-moyen);
+        margin-bottom: 20px;
+        font-size: 1.1rem;
+      }
+
+      .about-text .btn {
+        margin-top: 16px;
+      }
+
+      /* Services */
+      .services-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* centre horizontalement */
+        align-items: stretch; /* égalise la hauteur */
+        gap: 30px; /* espace entre les cartes */
+        margin-top: 40px;
+        padding: 10px 5px;
+      }
+
+      .service-card {
+        flex: 1 1 280px; /* largeur minimale 280px */
+        max-width: 330px;
+        background: var(--blanc);
+        padding: 25px 20px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        text-align: center;
+        transition: var(--transition);
+        border: 1px solid rgba(0, 166, 80, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .service-card:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: linear-gradient(
+          90deg,
+          var(--vert-vif),
+          var(--orange-chaud)
+        );
+      }
+
+      .service-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .service-icon {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 24px;
+        background: linear-gradient(
+          135deg,
+          var(--vert-vif) 0%,
+          var(--orange-chaud) 100%
+        );
+        box-shadow: 0 8px 20px rgba(0, 166, 80, 0.3);
+      }
+
+      .service-icon i {
+        color: var(--blanc);
+        font-size: 32px;
+      }
+
+      .service-card h3 {
+        color: var(--vert-vif);
+        margin-bottom: 16px;
+        font-size: 1.4rem;
+      }
+
+      .service-card p {
+        color: var(--gris-moyen);
+        line-height: 1.6;
+      }
+
+    /* Émissions améliorées avec vidéos */
+      .slider-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow-hover);
+        position: relative;
+      }
+
+      .slides {
+        display: flex;
+        transition: transform 0.9s ease-in-out;
+      }
+
+      .slide {
+        min-width: 100%;
+        position: relative;
+      }
+
+      .slide img,
+      .slide video {
+        width: 100%;
+        height: 600px;
+        object-fit: cover;
+        display: block;
+        transition: var(--transition);
+      }
+
+      .slide:hover img,
+      .slide:hover video {
+        transform: scale(1.05);
+      }
+
+      .slide-content {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 40px;
+        background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+        color: var(--blanc);
+        transform: translateY(0);
+        transition: var(--transition);
+      }
+
+      .slide:hover .slide-content {
+        background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+      }
+
+      .slide-content h3 {
+        margin: 0 0 12px;
+        font-size: 1.8rem;
+        color: var(--orange-chaud);
+      }
+
+      .slide-content p {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+
+      .slider-nav {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        padding: 0 20px;
+        z-index: 10;
+      }
+
+      .slider-nav button {
+        background: rgba(255, 255, 255, 0.95);
+        border: none;
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition 60s);
+        color: var(--vert-vif);
+      }
+
+      .slider-nav button:hover {
+        background: var(--orange-chaud);
+        color: var(--blanc);
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(255, 107, 0, 0.4);
+      }
+
+      .slider-dots {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+        margin-top: 24px;
+      }
+
+      .dot {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background: var(--gris-clair);
+        cursor: pointer;
+        transition: var(--transition);
+        border: 2px solid transparent;
+      }
+
+      .dot.active {
+        background: var(--orange-chaud);
+        transform: scale(1.2);
+        box-shadow: 0 2px 8px rgba(255, 107, 0, 0.3);
+      }
+
+      .dot:hover {
+        background: var(--orange-chaud);
+        transform: scale(1.1);
+      }
+
+      .video-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        border-radius: 10px; /* optionnel */
+      }
+
+      .video-wrapper iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .video-thumbnail {
+        width: 100%;
+        border-radius: 12px;
+        cursor: pointer;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+      }
+
+      .video-thumbnail:hover {
+        transform: scale(1.03);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      }
+
+
+      /* Galerie */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 20px;
+        margin-top: 40px;
+      }
+
+      .gallery-item {
+        position: relative;
+        border-radius: var(--radius);
+        overflow: hidden;
+        height: 250px;
+        cursor: pointer;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      .gallery-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+
+      .gallery-overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(
+          135deg,
+          rgba(0, 166, 80, 0.8) 0%,
+          rgba(255, 107, 0, 0.8) 100%
+        );
+        opacity: 0;
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover img {
+        transform: scale(1.1);
+      }
+
+      .gallery-item:hover .gallery-overlay {
+        opacity: 1;
+      }
+
+      .gallery-overlay i {
+        color: var(--blanc);
+        font-size: 32px;
+        transform: scale(0.8);
+        transition: var(--transition);
+      }
+
+      .gallery-item:hover .gallery-overlay i {
+        transform: scale(1);
+      }
+
+      /* Boutique */
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr); /* 3 cartes sur la deuxième ligne */
+        gap: 30px;
+        justify-items: center;
+        align-items: stretch;
+        margin-top: 40px;
+      }
+
+      .product-card:nth-child(4) {
+        grid-column: 2 / 3; /* place la première carte au centre, sur la première ligne */
+      }
+
+      .product-card {
+        background: var(--blanc);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: var(--transition);
+        border: 1px solid rgba(0, 166, 80, 0.1);
+        width: 100%;
+        max-width: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      /* image */
+      .product-img {
+        height: 250px;
+        overflow: hidden;
+      }
+      .product-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: var(--transition);
+      }
+      .product-card:hover .product-img img {
+        transform: scale(1.1);
+      }
+
+      /* contenu */
+      .product-info {
+        padding: 20px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .product-info h3 {
+        color: var(--vert-vif);
+        margin-bottom: 10px;
+        font-size: 1.2rem;
+      }
+
+      .product-price {
+        font-weight: 700;
+        color: var(--orange-chaud);
+        margin-bottom: 20px;
+        font-size: 1.3rem;
+      }
+
+      .product-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      /* quantité */
+      .quantity {
+        display: flex;
+        align-items: center;
+        border: 2px solid var(--gris-clair);
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .quantity button {
+        background: var(--blanc);
+        border: none;
+        padding: 10px 14px;
+        cursor: pointer;
+        transition: var(--transition);
+        font-weight: 700;
+        color: var(--vert-vif);
+      }
+      .quantity button:hover {
+        background: var(--vert-vif);
+        color: var(--blanc);
+      }
+      .quantity input {
+        width: 45px;
+        text-align: center;
+        border: none;
+        background: var(--blanc);
+        font-weight: 600;
+        color: var(--gris-fonce);
+      }
+
+      /* bouton ajouter */
+      .btn.add-to-cart {
+        flex: 1;
+        background: linear-gradient(135deg, var(--orange-chaud), var(--orange-fonce));
+        color: var(--blanc);
+        padding: 10px 20px;
+        border-radius: 50px;
+        font-weight: 700;
+        border: none;
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: 0 4px 12px rgba(255, 107, 0, 0.25);
+      }
+      .btn.add-to-cart:hover {
+        background: var(--vert-vif);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .products-grid {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .products-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+
+        .product-card {
+          max-width: 100%;
+        }
+      }
+
+
+
+      /* Témoignages */
+      .testimonials-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        margin-top: 40px;
+      }
+
+      .testimonial-card {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 40px 30px;
+        border-radius: var(--radius);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        position: relative;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .testimonial-card:before {
+        content: "“";
+        position: absolute;
+        top: 20px;
+        left: 30px;
+        font-size: 60px;
+        color: var(--orange-chaud);
+        opacity: 0.3;
+        font-family: serif;
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        color: var(--blanc);
+        margin-bottom: 24px;
+        font-size: 1.1rem;
+        line-height: 1.7;
+      }
+
+      .testimonial-author {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .testimonial-author img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid var(--orange-chaud);
+      }
+
+      .author-info h4 {
+        color: var(--blanc);
+        margin-bottom: 4px;
+      }
+
+      .author-info p {
+        color: rgba(255, 255, 255, 0.8);
+        font-size: 0.9rem;
+      }
+
+      /* Contact */
+      .contact-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-top: 40px;
+        align-items: start;
+      }
+
+      .contact-info .contact-item {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 32px;
+        align-items: center;
+      }
+      
+      
+      .contact-icon {
+        width: 65px;
+        height: 65px;
+        border-radius: 16px;
+        background: linear-gradient(135deg, var(--vert-vif) 0%, var(--orange-chaud) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        box-shadow: 0 4px 15px rgba(0, 166, 80, 0.3);
+      }
+
+      .contact-icon i {
+        color: var(--blanc);
+        font-size: 26px;
+      }
+
+      .contact-text h4 {
+        color: var(--vert-vif);
+        font-size: 1.2rem;
+        margin-bottom: 6px;
+      }
+
+      .contact-text p {
+        color: var(--gris-moyen);
+        font-size: 1rem;
+      }
+
+      .contact-form {
+        background: var(--vert-vif);
+        padding: 40px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(0, 166, 80, 0.1);
+      }
+
+      .contact-form h3 {
+        color: var(--blanc);
+        margin-bottom: 24px;
+        font-size: 1.6rem;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 16px 20px;
+        border-radius: var(--radius);
+        border: 2px solid var(--gris-clair);
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
+        transition: var(--transition);
+        background: var(--blanc);
+        margin-bottom: 20px;
+      }
+
+      .form-control:focus {
+        outline: none;
+        border-color: var(--vert-vif);
+        box-shadow: 0 0 0 3px rgba(0, 166, 80, 0.15);
+      }
+
+      .contact-form .btn {
+        width: 100%;
+        background: linear-gradient(135deg, var(--orange-chaud), var(--orange-fonce));
+        color: var(--blanc);
+        padding: 14px 0;
+        font-weight: 700;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .contact-form .btn:hover {
+        background: var(--vert-vif);
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      /* Responsive */
+      @media (max-width: 992px) {
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .contact-form {
+          padding: 30px 24px;
+        }
+      }
+
+      /*FOOTER */
+      footer {
+        background: linear-gradient(
+          135deg,
+          var(--vert-vif) 0%,
+          var(--vert-fonce) 100%
+        );
+        color: var(--blanc);
+        padding: 80px 0 40px;
+        margin-top: 60px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer-grid {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 40px;
+      }
+
+      .footer-col {
+        flex: 1 1 220px;
+        min-width: 220px;
+      }
+
+      footer .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .footer-col h3 {
+        margin-bottom: 20px;
+        color: var(--orange-chaud);
+        font-size: 1.6rem;
+        font-family: "Lobster", cursive;
+      }
+
+      .footer-col p {
+        color: rgba(255, 255, 255, 0.85);
+        line-height: 1.6;
+        margin-bottom: 16px;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.8);
+        transition: var(--transition);
+        display: inline-block;
+        text-decoration: none;
+      }
+
+      .footer-links a:hover {
+        color: var(--orange-chaud);
+        transform: translateX(8px);
+      }
+
+      .social-links {
+        display: flex;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--blanc);
+        transition: var(--transition);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .social-links a:hover {
+        background: var(--orange-chaud);
+        transform: translateY(-4px);
+        box-shadow: 0 8px 20px rgba(255, 107, 0, 0.3);
+      }
+
+      /* Newsletter */
+      .newsletter-form {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 16px;
+      }
+
+      .newsletter-form .form-group {
+        width: 100%;
+      }
+
+      .newsletter-form .form-control {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 30px;
+        border: none;
+        background: rgba(255, 255, 255, 0.9);
+        color: var(--blanc);
+        transition: all 0.3s ease;
+      }
+
+      .newsletter-form .form-control::placeholder {
+        color: var(--noir);
+      }
+
+      .newsletter-form .form-control:focus {
+        outline: none;
+        background: rgba(255, 255, 255, 0.25);
+      }
+
+      .newsletter-form .btn {
+        background: var(--orange-chaud);
+        color: var(--blanc);
+        border: none;
+        padding: 10px 25px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        width: fit-content;
+      }
+
+      .newsletter-form .btn:hover {
+        background: var(--blanc);
+        color: var(--vert-vif);
+      }
+
+      /* Footer Bottom */
+      .footer-bottom p {
+        font-size: 0.95rem;
+        opacity: 0.9;
+      }
+
+      /*LIGHTBOX*/
+      .lightbox {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.95);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 2000;
+        padding: 20px;
+      }
+
+      .lightbox.active {
+        display: flex;
+      }
+
+      .lightbox-content {
+        max-width: 1000px;
+        width: 100%;
+        position: relative;
+      }
+
+      .lightbox-content img {
+        width: 100%;
+        height: auto;
+        border-radius: var(--radius);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      }
+
+      .lightbox-close {
+        position: absolute;
+        top: -60px;
+        right: 0;
+        background: var(--orange-chaud);
+        border: none;
+        color: var(--blanc);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        cursor: pointer;
+        transition: var(--transition);
+        box-shadow: 0 4px 15px rgba(255, 107, 0, 0.3);
+      }
+
+      .lightbox-close:hover {
+        background: var(--vert-vif);
+        transform: scale(1.1);
+      }
+
+      .lightbox-nav {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        display: flex;
+        justify-content: space-between;
+        transform: translateY(-50%);
+        padding: 0 20px;
+      }
+
+      .lightbox-nav button {
+        background: rgba(255, 255, 255, 0.15);
+        border: none;
+        color: var(--blanc);
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .lightbox-nav button:hover {
+        background: var(--orange-chaud);
+        transform: scale(1.1);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        footer {
+          text-align: center;
+        }
+
+        .social-links {
+          justify-content: center;
+        }
+
+        .newsletter-form {
+          align-items: center;
+        }
+
+        .newsletter-form .btn {
+          width: auto;
+        }
+      }
+
+      /* Panier */
+      .cart-panel {
+        position: fixed;
+        top: 0;
+        right: -420px;
+        width: 380px;
+        height: 100vh;
+        background: var(--blanc);
+        box-shadow: -8px 0 30px rgba(0, 0, 0, 0.15);
+        z-index: 1500;
+        padding: 24px;
+        transition: var(--transition);
+        overflow: auto;
+      }
+
+      .cart-panel.active {
+        right: 0;
+      }
+
+      .cart-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+        border-bottom: 2px solid var(--gris-clair);
+        padding-bottom: 16px;
+      }
+
+      .cart-header h3 {
+        color: var(--vert-vif);
+        font-size: 1.5rem;
+      }
+
+      .cart-close {
+        background: none;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--gris-moyen);
+        transition: var(--transition);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cart-close:hover {
+        background: var(--gris-clair);
+        color: var(--orange-chaud);
+      }
+
+      .cart-items {
+        margin-top: 20px;
+      }
+
+      .cart-item {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--gris-clair);
+      }
+
+      .cart-item-img {
+        width: 80px;
+        height: 80px;
+        overflow: hidden;
+        border-radius: var(--radius);
+      }
+
+      .cart-item-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .cart-item-details h4 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        color: var(--vert-vif);
+      }
+
+      .cart-item-price {
+        color: var(--orange-chaud);
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      .cart-total {
+        display: flex;
+        justify-content: space-between;
+        font-weight: 800;
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 2px solid var(--gris-clair);
+        font-size: 1.2rem;
+      }
+
+      .total-amount {
+        color: var(--orange-chaud);
+      }
+
+      .overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 1400;
+        display: none;
+        backdrop-filter: blur(4px);
+      }
+
+      .overlay.active {
+        display: block;
+      }
+
+      /* Responsive */
+      @media (max-width: 1200px) {
+        .container {
+          max-width: 1000px;
+        }
+
+        .hero h2 {
+          font-size: 2.8rem;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .contact-grid {
+          grid-template-columns: 1fr;
+          gap: 40px;
+        }
+
+        .hero h2 {
+          font-size: 2.4rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          position: fixed;
+          left: -100%;
+          top: 74px;
+          width: 85%;
+          height: calc(100vh - 74px);
+          background: var(--vert-transparent);
+          backdrop-filter: blur(20px);
+          flex-direction: column;
+          padding: 40px 32px;
+          gap: 24px;
+          transition: var(--transition);
+          z-index: 1100;
+        }
+
+        nav ul.active {
+          left: 0;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+
+        .hero-inner {
+          padding: 40px 24px;
+          margin-top: 40px;
+        }
+
+        .hero h2 {
+          font-size: 2rem;
+        }
+
+        .hero-cta {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .btn {
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .slide img {
+          height: 400px;
+        }
+
+        .newsletter-form {
+          flex-direction: column;
+        }
+
+        .cart-panel {
+          width: 100%;
+          right: -100%;
+        }
+
+        .services-grid {
+          flex-direction: column;
+          align-items: center;
+        }
+        .service-card {
+          width: 90%;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 0 16px;
+        }
+
+        .slide img {
+          height: 300px;
+        }
+
+        .brand h1 {
+          font-size: 1.4rem;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+
+        .hero h2 {
+          font-size: 1.8rem;
+        }
+
+        .hero-inner {
+          padding: 30px 20px;
+        }
+
+        .cart-panel {
+          padding: 20px;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in {
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      .delay-1 {
+        animation-delay: 0.2s;
+      }
+
+      .delay-2 {
+        animation-delay: 0.4s;
+      }
+
+      .delay-3 {
+        animation-delay: 0.6s;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container header-grid">
+        <div class="brand">
+          <img src="assets/img/logo.jpg" alt="Yo Food Logo" />
+          <!--  <h1>Yo <span>Food</span></h1> -->
+        </div>
+
+        <nav aria-label="Navigation principale">
+          <ul>
+            <li><a href="#home" class="active">Accueil</a></li>
+            <li><a href="#about">Nous</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#emissions">Émissions</a></li>
+            <li><a href="#gallery">Galerie</a></li>
+            <li><a href="#shop">Boutique</a></li>
+            <li><a href="#testimonials">Témoignages</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+
+          <div class="cart-icon" title="Panier d'achat" aria-label="Panier">
+            <i class="fas fa-shopping-cart"></i>
+            <div class="cart-count">0</div>
+          </div>
+
+          <button class="hamburger" aria-label="Menu" aria-expanded="false">
+            <i class="fas fa-bars"></i>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main -->
+    <main>
+      <!-- Hero avec fond vert transparent sur image de plat -->
+      <section id="home" class="hero">
+        <div class="hero-inner container fade-in">
+          <span class="eyebrow">Émission Culinaire Immersive</span>
+          <h2>Vous cuisinez, On s'occupe de vous faire briller !</h2>
+          <p class="lead">
+            Rejoignez l'émission qui met en lumière les talents culinaires
+            africains. Recettes authentiques, interviews exclusives et
+            partenariats valorisants.
+          </p>
+          <div class="hero-cta">
+            <a class="btn" href="#emissions">Découvrir nos émissions</a>
+            <a class="btn secondary" href="#contact">Participer à l'émission</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="section section-white">
+        <div class="container">
+          <div class="section-title fade-in">
+            <h2>Qui sommes-nous</h2>
+            <p class="lead">
+              Yo Food est une émission immersive dédiée à valoriser les talents
+              culinaires africains et à créer des contenus professionnels pour
+              attracter partenaires et publics.
+            </p>
+          </div>
+
+          <div class="about-grid">
+            <div class="about-img fade-in">
+              <img
+                src="assets/img/nous.png"
+                alt="Équipe Yo Food"
+                loading="lazy"
+              />
+            </div>
+
+            <div class="about-text fade-in delay-1">
+              <h3>Notre Mission</h3>
+              <p>
+                Nous mettons en lumière les restaurateurs, chefs et créateurs
+                food afin de créer une visibilité forte et qualitative. Notre
+                format privilégie l'humain, la créativité et la mise en valeur
+                du lieu.
+              </p>
+              <p>
+                Nous offrons à chaque participant : une vidéo professionnelle,
+                des extraits pour les réseaux sociaux et une mise en avant lors
+                de nos événements exclusifs.
+              </p>
+              <a class="btn" href="#contact">Nous rejoindre</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services -->
+      <section id="services" class="section section-green">
+        <div class="container">
+          <div class="section-title fade-in">
+            <h2>Nos Services</h2>
+            <p class="lead">
+              Tournages professionnels, partenariats stratégiques, ateliers
+              culinaires et production de contenus — tout pour faire briller
+              votre établissement.
+            </p>
+          </div>
+
+          <div class="services-grid">
+            <div class="service-card fade-in">
+              <div class="service-icon"><i class="fas fa-video"></i></div>
+              <h3>Émissions TV & Web</h3>
+              <p>
+                Production d'extraits vidéo professionnels et formats pensés
+                pour la diffusion télévisée et les réseaux sociaux.
+              </p>
+            </div>
+
+            <div class="service-card fade-in delay-1">
+              <div class="service-icon"><i class="fas fa-utensils"></i></div>
+              <h3>Ateliers & Masterclass</h3>
+              <p>
+                Formations pratiques et ateliers culinaires pour chefs, équipes
+                de restauration et passionnés de cuisine.
+              </p>
+            </div>
+
+            <div class="service-card fade-in delay-2">
+              <div class="service-icon"><i class="fas fa-handshake"></i></div>
+              <h3>Partenariats & Sponsoring</h3>
+              <p>
+                Création d'opérations sur-mesure pour marques souhaitant activer
+                auprès d'un public culinaire engagé.
+              </p>
+            </div>
+
+            <div class="service-card fade-in delay-3">
+              <div class="service-icon">
+                <i class="fas fa-calendar-check"></i>
+              </div>
+              <h3>Événements & Festivals</h3>
+              <p>
+                Organisation d'événements culinaires, stands animés et
+                expériences immersives pour valoriser vos produits.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Emissions avec slider vidéo amélioré -->
+      <section id="emissions" class="section section-white">
+        <div class="container">
+          <div class="section-title fade-in">
+            <h2>Nos Émissions</h2>
+            <p class="lead">Découvrez nos vidéos immersives en slider - des expériences culinaires uniques à travers l'Afrique</p>
+          </div>
+
+          <div class="slider-container fade-in">
+            <div class="slides">
+              <!-- Slide 1 -->
+               <div class="slide">
+                  <div class="video-wrapper">
+                    <iframe 
+                      src="https://www.youtube.com/embed/WuczE8jTa4o?autoplay=1&mute=1&loop=1&playlist=WuczE8jTa4o"
+                      frameborder="0"
+                      allow="autoplay; encrypted-media"
+                      allowfullscreen
+                      playsinline>
+                    </iframe>
+                  </div>
+                  <div class="slide-content">
+                    <h3>interview</h3>
+                    <p>Découverte du festival de food trucks "Yo Food"  </p>
+                  </div>
+                </div>
+
+              <!-- Slide 2 -->
+                <div class="slide">
+                  <a href="https://www.youtube.com/@yofood11?si=--2dt35z0774EIZW" target="_blank">
+                    <img src="assets/img/epi2.jpg" alt="Épisode 1 - Street Food Raffinée" class="video-thumbnail">
+                  </a>
+                  <div class="slide-content">
+                    <h3>Épisode 1 : Street Food Raffinée</h3>
+                    <p>Recette revisitée avec une cheffe malienne étoilée</p>
+                  </div>
+                </div>
+
+
+              <!-- Slide 3
+              <div class="slide">
+                <img src="assets/img/emission-3.jpg" alt="Émission 3 - Cuisine Sénégalaise" loading="lazy">
+                <div class="slide-content">
+                  <h3>Épisode 3 : Trésors du Sénégal</h3>
+                  <p>Exploration des saveurs authentiques de Dakar</p>
+                </div>
+              </div> -->
+
+              <!-- Slide 4
+              <div class="slide">
+                <video src="assets/videos/video4.mp4" autoplay muted loop playsinline></video>
+                <div class="slide-content">
+                  <h3>Épisode 4 : Innovation Culinaire</h3>
+                  <p>Fusion entre tradition et modernité en Côte d'Ivoire</p>
+                </div>
+              </div>
+            </div> -->
+
+            <!-- Navigation -->
+            <div class="slider-nav">
+              <button class="prev" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
+              <button class="next" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
+            </div>
+          </div>
+
+          <!-- Dots -->
+          <div class="slider-dots" role="tablist" aria-label="Navigation slides">
+            <span class="dot active" role="tab" aria-label="Slide 1"></span>
+            <span class="dot" role="tab" aria-label="Slide 2"></span>
+            <!-- <span class="dot" role="tab" aria-label="Slide 3"></span>
+            <span class="dot" role="tab" aria-label="Slide 4"></span> -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Gallery -->
+      <section id="gallery" class="section section-orange">
+        <div class="container">
+          <div class="section-title fade-in">
+            <h2>Galerie</h2>
+            <p class="lead">
+              Quelques moments forts de nos émissions et événements.
+            </p>
+          </div>
+
+          <div class="gallery-grid">
+            <div class="gallery-item fade-in">
+              <img src="assets/img/1.jpg" alt="Plat 1" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="gallery-item fade-in delay-1">
+              <img src="assets/img/2.JPG" alt="Plat 2" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="gallery-item fade-in delay-2">
+              <img src="assets/img/3.JPG" alt="Plat 3" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="gallery-item fade-in delay-3">
+              <img src="assets/img/4.JPG" alt="Plat 4" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="gallery-item fade-in">
+              <img src="assets/img/5.JPG" alt="Plat 5" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+            <div class="gallery-item fade-in delay-1">
+              <img src="assets/img/6.jpg" alt="Plat 6" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+             <div class="gallery-item fade-in">
+              <img src="assets/img/7.JPG" alt="Plat 5" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+             <div class="gallery-item fade-in">
+              <img src="assets/img/8.JPG" alt="Plat 5" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+             <div class="gallery-item fade-in">
+              <img src="assets/img/9.JPG" alt="Plat 5" loading="lazy" />
+              <div class="gallery-overlay">
+                <i class="fas fa-search-plus"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shop -->
+      <section id="shop" class="section section-white">
+        <div class="container">
+          <div class="section-title fade-in">
+            <h2>Boutique</h2>
+            <p class="lead">
+              Nos tabliers et goodies — ajoutez au panier et commandez (paiement
+              géré séparément).
+            </p>
+          </div>
+
+          <div class="products-grid">
+            <div class="product-card fade-in">
+              <div class="product-img">
+                <img
+                  src="assets/img/shop1.jpg"
+                  alt="Tablier Yo Food"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-info">
+                <h3>Tablier Yo Food</h3>
+                <div class="product-price">15 000 FCFA</div>
+                <div class="product-actions">
+                  <div class="quantity">
+                    <button class="minus">-</button
+                    ><input type="text" value="1" readonly /><button
+                      class="plus"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn add-to-cart"
+                    data-id="1"
+                    data-name="Tablier Yo Food"
+                    data-price="15000"
+                  >
+                    Ajouter
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card fade-in delay-1">
+              <div class="product-img">
+                <img
+                  src="assets/img/shop2.jpg"
+                  alt="Tablier Premium"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-info">
+                <h3>Tablier Premium</h3>
+                <div class="product-price">22 000 FCFA</div>
+                <div class="product-actions">
+                  <div class="quantity">
+                    <button class="minus">-</button
+                    ><input type="text" value="1" readonly /><button
+                      class="plus"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn add-to-cart"
+                    data-id="2"
+                    data-name="Tablier Premium"
+                    data-price="22000"
+                  >
+                    Ajouter
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card fade-in delay-2">
+              <div class="product-img">
+                <img
+                  src="assets/img/shop3.jpg"
+                  alt="Set Couteaux"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-info">
+                <h3>Set de Couteaux Yo Food</h3>
+                <div class="product-price">35 000 FCFA</div>
+                <div class="product-actions">
+                  <div class="quantity">
+                    <button class="minus">-</button
+                    ><input type="text" value="1" readonly /><button
+                      class="plus"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn add-to-cart"
+                    data-id="3"
+                    data-name="Set de Couteaux Yo Food"
+                    data-price="35000"
+                  >
+                    Ajouter
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="product-card fade-in delay-3">
+              <div class="product-img">
+                <img
+                  src="assets/img/shop4.jpg"
+                  alt="Livre Recettes"
+                  loading="lazy"
+                />
+              </div>
+              <div class="product-info">
+                <h3>Livre de Recettes Yo Food</h3>
+                <div class="product-price">12 000 FCFA</div>
+                <div class="product-actions">
+                  <div class="quantity">
+                    <button class="minus">-</button
+                    ><input type="text" value="1" readonly /><button
+                      class="plus"
+                    >
+                      +
+                    </button>
+                  </div>
+                  <button
+                    class="btn add-to-cart"
+                    data-id="4"
+                    data-name="Livre de Recettes Yo Food"
+                    data-price="12000"
+                  >
+                    Ajouter
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Cart Panel & overlay -->
+      <div class="cart-panel" aria-hidden="true">
+        <div class="cart-header">
+          <h3>Votre panier</h3>
+          <button class="cart-close" aria-label="Fermer le panier">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+        <div class="cart-items"></div>
+        <div class="cart-total">
+          <span>Total :</span><span class="total-amount">0 FCFA</span>
+        </div>
+        <div
+          style="
+            margin-top: 20px;
+            display: flex;
+            gap: 12px;
+            flex-direction: column;
+          "
+        >
+          <button class="btn" id="checkout-btn">Commander</button>
+          <button class="btn secondary" id="continue-shopping">
+            Continuer mes achats
+          </button>
+        </div>
+      </div>
+      <div class="overlay" aria-hidden="true"></div>
+
+      <!-- Testimonials -->
+      <section id="testimonials" class="section section-green">
+        <div class="container">
+          <div class="section-title fade-in">
+            <h2>Témoignages</h2>
+            <p class="lead">
+              Ce que disent nos participants et partenaires après leur passage.
+            </p>
+          </div>
+
+          <div class="testimonials-grid">
+            <div class="testimonial-card fade-in">
+              <div class="testimonial-text">
+                Yo Food a changé notre visibilité — un format pro et humain qui
+                attire les bonnes audiences. Notre restaurant a vu sa
+                fréquentation augmenter.
+              </div>
+              <div class="testimonial-author">
+                <img
+                  src="assets/img/test2.jpg"
+                  alt="Chef Amadou"
+                  loading="lazy"
+                />
+                <div class="author-info">
+                  <h4>Chef Amadou</h4>
+                  <p>Saveurs de Bamako</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card fade-in delay-1">
+              <div class="testimonial-text">
+                Collaboration réussie : excellente mise en valeur produit et
+                activation sociale. Contenu authentique et impactant.
+              </div>
+              <div class="testimonial-author">
+                <img
+                  src="assets/img/test3.jpg"
+                  alt="Marie Koné"
+                  loading="lazy"
+                />
+                <div class="author-info">
+                  <h4>Marie Koné</h4>
+                  <p>FoodCo</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="testimonial-card fade-in delay-2">
+              <div class="testimonial-text">
+                L'équipe est professionnelle et créative — respect du lieu et du
+                savoir-faire local.
+              </div>
+              <div class="testimonial-author">
+                <img
+                  src="assets/img/test1.png"
+                  alt="Fatou"
+                  loading="lazy"
+                />
+                <div class="author-info">
+                  <h4>Fatou Diop</h4>
+                  <p>Chef & Restauratrice</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section section-green" style="background: var(--blanc);">
+        <div class="container">
+          <div class="section-title fade-in">
+            <h2 style="color: #00a650;">Contactez-nous</h2>
+            <p class="lead" style="color: var(--gris-moyen);">
+              Une question ? Une collaboration ? Yo Food reste à votre écoute.
+            </p>
+          </div>
+
+          <div class="contact-grid fade-in">
+            <!-- Infos -->
+            <div class="contact-info">
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                <div class="contact-text">
+                  <h4>Téléphone</h4>
+                  <p>+223 70 91 11 46</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                <div class="contact-text">
+                  <h4>Email</h4>
+                  <p>salimatatoure405@gmail.com</p>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                <div class="contact-text">
+                  <h4>Adresse</h4>
+                  <p>Bamako, Palais de la Culture</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Formulaire -->
+            <div class="contact-form">
+              <h3>Envoyez-nous un message</h3>
+              <form>
+                <input type="text" class="form-control" placeholder="Votre nom" required />
+                <input type="email" class="form-control" placeholder="Votre email" required />
+                <textarea rows="5" class="form-control" placeholder="Votre message..." required></textarea>
+                <button type="submit" class="btn">Envoyer le message</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+      <!-- Footer -->
+      <footer>
+        <div class="container">
+          <div class="footer-grid">
+            <div class="footer-col">
+              <h3>Yo Food</h3>
+              <p>
+                L'émission culinaire qui valorise les talents et saveurs
+                africaines. Rejoignez-nous pour partager votre passion et briller
+                sur nos plateformes.
+              </p>
+              <div class="social-links">
+                <a href="https://www.facebook.com/share/1FgL9kv6dD/?mibextid=wwXIfr" aria-label="Facebook"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="https://www.instagram.com/yofood11?igsh=MWY0NHl6bHhvY3cw" aria-label="Instagram"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#" aria-label="Twitter"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="https://www.youtube.com/@yofood11?si=--2dt35z0774EIZW" aria-label="YouTube"
+                  ><i class="fab fa-youtube"></i
+                ></a>
+              </div>
+            </div>
+
+            <div class="footer-col">
+              <h3>Liens rapides</h3>
+              <ul class="footer-links">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#about">Qui sommes-nous</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#emissions">Émissions</a></li>
+                <li><a href="#shop">Boutique</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <h3>Services</h3>
+              <ul class="footer-links">
+                <li><a href="#">Émissions TV & Web</a></li>
+                <li><a href="#">Ateliers culinaires</a></li>
+                <li><a href="#">Partenariats</a></li>
+                <li><a href="#">Événements</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-col">
+              <h3>Newsletter</h3>
+              <p>
+                Abonnez-vous pour recevoir nos dernières actualités et offres
+                spéciales.
+              </p>
+              <form class="newsletter-form">
+                <div class="form-group">
+                  <input
+                    class="form-control"
+                    type="email"
+                    placeholder="Votre email"
+                    required
+                  />
+                </div>
+                <button class="btn" type="submit">S'abonner</button>
+              </form>
+            </div>
+          </div>
+
+          <div
+            class="footer-bottom"
+            style="
+              margin-top: 40px;
+              text-align: center;
+              color: rgba(255, 255, 255, 0.8);
+              padding-top: 40px;
+              border-top: 1px solid rgba(255, 255, 255, 0.1);
+            "
+          >
+            <p>&copy; <span id="year"></span> Yo Food — Tous droits réservés</p>
+          </div>
+        </div>
+      </footer>
+
+      <!-- Lightbox element -->
+      <div class="lightbox" aria-hidden="true">
+        <button class="lightbox-close" aria-label="Fermer">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="lightbox-content"><img src="" alt="Image agrandie" /></div>
+        <div class="lightbox-nav">
+          <button class="lightbox-prev" aria-label="Image précédente">
+            <i class="fas fa-chevron-left"></i></button
+          ><button class="lightbox-next" aria-label="Image suivante">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <script>
+        // ---------- Utilities ----------
+        const $ = sel => document.querySelector(sel);
+        const $$ = sel => Array.from(document.querySelectorAll(sel));
+
+        // Update year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ---------- Header behavior ----------
+        const header = $('header');
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 60) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+          updateActiveLinkOnScroll();
+        });
+
+        // Mobile menu
+        const hamburger = $('.hamburger');
+        const navList = document.querySelector('nav ul');
+        if(hamburger){
+          hamburger.addEventListener('click', () => {
+            navList.classList.toggle('active');
+            hamburger.setAttribute('aria-expanded', navList.classList.contains('active'));
+          });
+        }
+        // Close mobile nav when link clicked
+        $$('nav a').forEach(a => a.addEventListener('click', () => {
+          navList.classList.remove('active');
+          hamburger.setAttribute('aria-expanded', 'false');
+        }));
+
+        // Smooth scroll behavior for nav
+        $$('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e){
+            const target = document.querySelector(this.getAttribute('href'));
+            if(!target) return;
+            e.preventDefault();
+            const offset = 80;
+            const top = target.offsetTop - offset;
+            window.scrollTo({top, behavior:'smooth'});
+          });
+        });
+
+        // ---------- Active nav on scroll ----------
+        const sections = $$('main section[id], main > section[id]');
+        const navLinks = $$('nav a');
+
+        function updateActiveLinkOnScroll(){
+          let current = null;
+          sections.forEach(sec => {
+            const top = sec.offsetTop - 120;
+            if(window.scrollY >= top) current = sec.getAttribute('id');
+          });
+          if(current){
+            navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#'+current));
+          }
+        }
+        updateActiveLinkOnScroll();
+
+        // ---------- Slider (Emissions) ----------
+        const slidesWrap = $('.slides');
+        const slideItems = $$('.slide');
+        const dots = $$('.dot');
+        const prevBtn = $('.prev');
+        const nextBtn = $('.next');
+        let currentSlide = 0;
+        const slideCount = slideItems.length || 1;
+
+        function goToSlide(index){
+          currentSlide = (index + slideCount) % slideCount;
+          slidesWrap.style.transform = `translateX(-${currentSlide * 100}%)`;
+          dots.forEach((d,i)=> d.classList.toggle('active', i===currentSlide));
+        }
+
+        if(nextBtn) nextBtn.addEventListener('click', ()=>{ goToSlide(currentSlide+1); resetSlideInterval();});
+        if(prevBtn) prevBtn.addEventListener('click', ()=>{ goToSlide(currentSlide-1); resetSlideInterval();});
+        dots.forEach((dot, i) => dot.addEventListener('click', ()=>{ goToSlide(i); resetSlideInterval(); }));
+
+        let slideInterval = setInterval(()=> goToSlide(currentSlide+1), 30000);
+        function resetSlideInterval(){ clearInterval(slideInterval); slideInterval = setInterval(()=> goToSlide(currentSlide+1), 30000); }
+
+        // ---------- Gallery Lightbox ----------
+        const galleryItems = $$('.gallery-item');
+        const lightbox = $('.lightbox');
+        const lightboxImg = lightbox ? lightbox.querySelector('.lightbox-content img') : null;
+        const lightboxClose = lightbox ? lightbox.querySelector('.lightbox-close') : null;
+        const lightboxPrev = lightbox ? lightbox.querySelector('.lightbox-prev') : null;
+        const lightboxNext = lightbox ? lightbox.querySelector('.lightbox-next') : null;
+        let galleryImages = [];
+        let currentImageIndex = 0;
+        if(galleryItems.length){
+          galleryImages = galleryItems.map(it => it.querySelector('img').src);
+          galleryItems.forEach((it, idx) => {
+            it.addEventListener('click', ()=> openLightbox(idx));
+          });
+        }
+
+        function openLightbox(index){
+          currentImageIndex = index;
+          if(lightboxImg) lightboxImg.src = galleryImages[currentImageIndex];
+          if(lightbox) { 
+            lightbox.classList.add('active'); 
+            document.body.style.overflow = 'hidden'; 
+            lightbox.setAttribute('aria-hidden', 'false');
+          }
+        }
+        function closeLightbox(){ 
+          if(lightbox){ 
+            lightbox.classList.remove('active'); 
+            document.body.style.overflow = 'auto'; 
+            lightbox.setAttribute('aria-hidden', 'true');
+          } 
+        }
+        function nextImage(){ currentImageIndex = (currentImageIndex+1) % galleryImages.length; if(lightboxImg) lightboxImg.src = galleryImages[currentImageIndex]; }
+        function prevImage(){ currentImageIndex = (currentImageIndex-1 + galleryImages.length) % galleryImages.length; if(lightboxImg) lightboxImg.src = galleryImages[currentImageIndex]; }
+
+        if(lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+        if(lightboxNext) lightboxNext.addEventListener('click', nextImage);
+        if(lightboxPrev) lightboxPrev.addEventListener('click', prevImage);
+        if(lightbox) lightbox.addEventListener('click', (e)=> { if(e.target === lightbox) closeLightbox(); });
+        document.addEventListener('keydown', (e)=> {
+          if(!lightbox || !lightbox.classList.contains('active')) return;
+          if(e.key === 'Escape') closeLightbox();
+          if(e.key === 'ArrowRight') nextImage();
+          if(e.key === 'ArrowLeft') prevImage();
+        });
+
+        // ---------- Cart / Shop functionality ----------
+        const cartIcon = $('.cart-icon');
+        const cartPanel = $('.cart-panel');
+        const cartClose = $('.cart-close');
+        const overlay = $('.overlay');
+        const cartItemsContainer = $('.cart-items');
+        const cartCountEl = $('.cart-count');
+        const totalAmountEl = $('.total-amount');
+        const checkoutBtn = $('#checkout-btn');
+        const continueShopping = $('#continue-shopping');
+        const addToCartButtons = $$('.add-to-cart');
+
+        let cart = [];
+
+        function toggleCart(){
+          const active = cartPanel.classList.toggle('active');
+          overlay.classList.toggle('active', active);
+          cartPanel.setAttribute('aria-hidden', !active);
+          overlay.setAttribute('aria-hidden', !active);
+        }
+
+        if(cartIcon) cartIcon.addEventListener('click', toggleCart);
+        if(cartClose) cartClose.addEventListener('click', toggleCart);
+        if(overlay) overlay.addEventListener('click', toggleCart);
+        if(continueShopping) continueShopping.addEventListener('click', toggleCart);
+
+        function updateCartUI(){
+          cartItemsContainer.innerHTML = '';
+          if(cart.length === 0){
+            cartItemsContainer.innerHTML = '<p style="text-align:center;color:var(--gris-moyen);padding:40px 0">Votre panier est vide</p>';
+            cartCountEl.textContent = '0';
+            totalAmountEl.textContent = '0 FCFA';
+            return;
+          }
+          let total = 0;
+          let count = 0;
+          cart.forEach(item => {
+            total += item.quantity * item.price;
+            count += item.quantity;
+            const div = document.createElement('div');
+            div.className = 'cart-item';
+            div.innerHTML = `
+              <div class="cart-item-img"><img src="${item.img || 'assets/img/product-' + item.id + '.jpg'}" alt="${item.name}" loading="lazy"></div>
+              <div class="cart-item-details">
+                <h4>${item.name}</h4>
+                <div class="cart-item-price">${item.price.toLocaleString()} FCFA</div>
+                <div class="cart-item-quantity" style="margin-top:8px;display:flex;align-items:center;gap:8px">
+                  <button class="decrease" data-id="${item.id}" style="background:var(--gris-clair);border:none;width:32px;height:32px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center">-</button>
+                  <input value="${item.quantity}" readonly style="width:40px;text-align:center;border:1px solid var(--gris-clair);padding:6px;border-radius:6px;background:#fff;font-weight:600">
+                  <button class="increase" data-id="${item.id}" style="background:var(--gris-clair);border:none;width:32px;height:32px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center">+</button>
+                  <button class="cart-item-remove" data-id="${item.id}" style="margin-left:8px;background:none;border:none;color:var(--orange-chaud);cursor:pointer;font-size:16px"><i class="fas fa-trash"></i></button>
+                </div>
+              </div>
+            `;
+            cartItemsContainer.appendChild(div);
+          });
+          cartCountEl.textContent = count;
+          totalAmountEl.textContent = `${total.toLocaleString()} FCFA`;
+
+          // attach listeners
+          $$('.decrease').forEach(btn => btn.addEventListener('click', e => { changeQuantity(e.target.dataset.id, -1); }));
+          $$('.increase').forEach(btn => btn.addEventListener('click', e => { changeQuantity(e.target.dataset.id, +1); }));
+          $$('.cart-item-remove').forEach(btn => btn.addEventListener('click', e => { removeFromCart(e.target.closest('button').dataset.id); }));
+        }
+
+        function addToCart(id, name, price, quantity=1){
+          const existing = cart.find(i => i.id === id);
+          if(existing) existing.quantity += quantity;
+          else cart.push({id, name, price, quantity, img: 'assets/img/product-' + id + '.jpg'});
+          updateCartUI();
+          showToast(`${name} ajouté au panier`);
+        }
+
+        function changeQuantity(id, delta){
+          const item = cart.find(i => i.id === id);
+          if(!item) return;
+          item.quantity += delta;
+          if(item.quantity <= 0) cart = cart.filter(i => i.id !== id);
+          updateCartUI();
+        }
+
+        function removeFromCart(id){
+          cart = cart.filter(i => i.id !== id);
+          updateCartUI();
+        }
+
+        addToCartButtons.forEach(btn => {
+          btn.addEventListener('click', () => {
+            const id = btn.dataset.id;
+            const name = btn.dataset.name;
+            const price = parseInt(btn.dataset.price, 10);
+            const qty = parseInt(btn.parentElement.querySelector('input').value || 1, 10);
+            addToCart(id, name, price, qty);
+          });
+        });
+
+        // quantity +/- for product cards
+        $$('.quantity').forEach(q => {
+          const minus = q.querySelector('.minus');
+          const plus = q.querySelector('.plus');
+          const input = q.querySelector('input');
+          minus && minus.addEventListener('click', ()=> { input.value = Math.max(1, parseInt(input.value) - 1); });
+          plus && plus.addEventListener('click', ()=> { input.value = parseInt(input.value) + 1; });
+        });
+
+        if(checkoutBtn) checkoutBtn.addEventListener('click', ()=> {
+          if(cart.length === 0) return alert('Votre panier est vide');
+          // Simple simulated flow — integrate payment / backend separately
+          alert('Merci pour votre commande ! Nous vous contacterons pour finaliser la livraison/paiement.');
+          cart = [];
+          updateCartUI();
+          toggleCart();
+        });
+
+        // toast notification
+        function showToast(msg){
+          const el = document.createElement('div');
+          el.textContent = msg;
+          el.style.cssText = 'position:fixed;top:120px;right:20px;background:var(--vert-vif);color:#fff;padding:16px 20px;border-radius:var(--radius);box-shadow:var(--shadow-hover);z-index:2200;font-weight:600;max-width:300px;opacity:0;transform:translateX(100px);transition:all 0.3s ease';
+          document.body.appendChild(el);
+          setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateX(0)'; }, 10);
+          setTimeout(()=> { el.style.opacity = '0'; el.style.transform = 'translateX(100px)'; }, 2600);
+          setTimeout(()=> el.remove(), 3000);
+        }
+
+        // ---------- Contact form ----------
+        const contactForm = $('#contact-form');
+        if(contactForm) contactForm.addEventListener('submit', e => {
+          e.preventDefault();
+          showToast('Message envoyé ! Nous reviendrons vers vous sous 24h.');
+          contactForm.reset();
+        });
+
+        // ---------- Newsletter form ----------
+        const newsletterForm = $('.newsletter-form');
+        if(newsletterForm) newsletterForm.addEventListener('submit', e => {
+          e.preventDefault();
+          showToast('Merci pour votre abonnement à notre newsletter !');
+          newsletterForm.reset();
+        });
+
+        // ---------- IntersectionObserver for smooth reveal ----------
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if(entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              // Add fade-in animation to child elements with delays
+              const children = entry.target.querySelectorAll('.fade-in, .delay-1, .delay-2, .delay-3');
+              children.forEach(child => {
+                child.style.opacity = '0';
+                child.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                  child.style.transition = 'all 0.6s ease';
+                  child.style.opacity = '1';
+                  child.style.transform = 'translateY(0)';
+                }, 100);
+              });
+            }
+          });
+        }, {threshold: 0.12});
+        
+        // Observe sections
+        $$('section').forEach(s => io.observe(s));
+
+        // ---------- Keyboard support for slider navigation ----------
+        document.addEventListener('keydown', e => {
+          if(e.key === 'ArrowLeft') goToSlide(currentSlide-1);
+          if(e.key === 'ArrowRight') goToSlide(currentSlide+1);
+        });
+
+        document.querySelectorAll(".add-to-cart").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              btn.textContent = "Ajouté ✓";
+              btn.style.background = "var(--vert-vif)";
+              setTimeout(() => {
+                btn.textContent = "Ajouter";
+                btn.style.background = "linear-gradient(135deg, var(--orange-chaud), var(--orange-fonce))";
+              }, 1500);
+            });
+          });
+
+        // init UI
+        updateCartUI();
+        goToSlide(0);
+      </script>
+  </body>
+</html>

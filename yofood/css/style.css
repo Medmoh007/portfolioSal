@@ -1,0 +1,194 @@
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: #333;
+  background: #fff;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Montserrat", sans-serif;
+  margin: 0 0 10px;
+}
+
+/* ------- BOUTONS ------- */
+.btn-orange {
+  background: #ff5722;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: 0.3s;
+  font-size: 16px;
+}
+.btn-orange:hover {
+  background: #e64a19;
+}
+
+.btn-white {
+  background: white;
+  color: #ff5722;
+  border: 2px solid #ff5722;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+.btn-white:hover {
+  background: #f5f5f5;
+}
+
+.btn-black {
+  background: black;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* ------- HEADER ------- */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.burger {
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* ------- HERO ------- */
+.hero {
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 50%;
+}
+.overlay-circle {
+  width: 200px;
+  height: 200px;
+  background: #e3f2fd;
+  border-radius: 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+/* ------- GASTRONOMIE ------- */
+.gastronomie {
+  background: #ff5722;
+  color: white;
+  text-align: center;
+  padding: 40px;
+}
+.grid-4 {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(4, 1fr);
+}
+.card {
+  background: white;
+  color: #333;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* ------- SECTIONS FLEX ------- */
+.cours,
+.legumes,
+.saine {
+  display: flex;
+  align-items: center;
+  padding: 40px;
+  gap: 20px;
+}
+.public {
+  background: #f5f5f5;
+  padding: 40px;
+  text-align: center;
+}
+
+/* ------- GALERIE ------- */
+.galerie img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+/* ------- FOOTER ------- */
+footer {
+  background: #fff;
+  text-align: center;
+  padding: 40px;
+}
+footer form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  margin: auto;
+}
+footer input,
+footer textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ------- RESPONSIVE DESIGN ------- */
+
+/* Tablettes */
+@media (max-width: 1024px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cours,
+  .legumes,
+  .saine {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Mobiles */
+@media (max-width: 600px) {
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+  h1 {
+    font-size: 36px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+  .btn-orange,
+  .btn-white {
+    width: 100%;
+  }
+  .header {
+    flex-direction: column;
+  }
+  .burger {
+    margin-top: 10px;
+  }
+}

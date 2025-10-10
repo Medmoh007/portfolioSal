@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Yo Food — Food & Émissions</title>
+    <meta
+      name="description"
+      content="Yo Food — émissions et créations culinaires. Découvrez nos services UGC, recettes et collaborations."
+    />
+    <link rel="icon" href="assets/favicon.png" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <a class="logo" href="#">Yo Food</a>
+        <nav class="nav" id="nav">
+          <a href="#home">Accueil</a>
+          <a href="#about">Qui sommes-nous</a>
+          <a href="#services">Services</a>
+          <a href="#episodes">Émissions</a>
+          <a href="#contact">Contact</a>
+        </nav>
+        <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu">
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section id="home" class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <h1>Yo Food — Saveurs, vidéos & collaborations</h1>
+            <p>
+              Des émissions culinaires halal, du contenu UGC créatif et des
+              recettes faciles à reproduire.
+            </p>
+            <div class="hero-ctas">
+              <a class="btn primary" href="#episodes">Voir nos émissions</a>
+              <a class="btn outline" href="#contact">Travailler ensemble</a>
+            </div>
+          </div>
+          <div class="hero-media">
+            <img src="assets/hero-placeholder.jpg" alt="Plat Yo Food" />
+          </div>
+        </div>
+      </section>
+
+      <!-- WHO WE ARE -->
+      <section id="about" class="section about">
+        <div class="container">
+          <h2>Qui sommes-nous ?</h2>
+          <div class="about-grid">
+            <div class="about-text">
+              <p>
+                <strong>Yo Food</strong> crée des émissions culinaires et du
+                contenu gourmand, respectueux des valeurs halal et orienté
+                engagement social. Nous travaillons avec des marques, créons des
+                vidéos recettes et animons des ateliers.
+              </p>
+              <p>
+                Notre approche : simplicité, authenticité et saveurs
+                accessibles.
+              </p>
+              <a class="btn" href="#contact">Nous contacter</a>
+            </div>
+            <div class="about-image">
+              <img src="assets/team-placeholder.jpg" alt="Équipe Yo Food" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES -->
+      <section id="services" class="section services">
+        <div class="container">
+          <h2>Nos services</h2>
+          <div class="cards">
+            <article class="card">
+              <h3>Création de contenu (UGC)</h3>
+              <p>
+                Vidéos courtes optimisées pour TikTok/IG/Reels — concept,
+                tournage, montage.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Émissions culinaires</h3>
+              <p>
+                Production d'épisodes prêts à diffuser (format court ou long) et
+                hébergement vidéo.
+              </p>
+            </article>
+            <article class="card">
+              <h3>Ateliers & Coaching</h3>
+              <p>
+                Ateliers de cuisine, cours virtuels et conseils pour marques.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- EPISODES / VIDEOS -->
+      <section id="episodes" class="section episodes">
+        <div class="container">
+          <h2>Nos émissions</h2>
+          <p class="muted">Cliquez pour regarder</p>
+
+          <div class="grid-videos">
+            <!-- Video item: replace data-video with YouTube embed url or id -->
+            <div
+              class="video-card"
+              data-video="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              aria-hidden="false"
+            >
+              <img src="assets/video-thumb-1.jpg" alt="Épisode 1" />
+              <div class="video-meta">
+                <h4>Épisode 1 — Recette facile</h4>
+                <button
+                  class="btn play"
+                  data-video="https://www.youtube.com/embed/dQw4w9WgXcQ"
+                >
+                  Regarder
+                </button>
+              </div>
+            </div>
+
+            <div
+              class="video-card"
+              data-video="https://www.youtube.com/embed/ScMzIvxBSi4"
+            >
+              <img src="assets/video-thumb-2.jpg" alt="Épisode 2" />
+              <div class="video-meta">
+                <h4>Épisode 2 — Street food</h4>
+                <button
+                  class="btn play"
+                  data-video="https://www.youtube.com/embed/ScMzIvxBSi4"
+                >
+                  Regarder
+                </button>
+              </div>
+            </div>
+
+            <!-- add more -->
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEO MODAL -->
+      <div id="videoModal" class="modal" aria-hidden="true">
+        <div class="modal-inner">
+          <button class="modal-close" id="modalClose" aria-label="Fermer">
+            ✕
+          </button>
+          <div class="video-wrapper" id="videoWrapper">
+            <!-- iframe injected by JS -->
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT -->
+      <section id="contact" class="section contact">
+        <div class="container">
+          <h2>Contact</h2>
+          <p>
+            Pour collaborations, devis ou informations — envoyez-nous un
+            message.
+          </p>
+          <form
+            id="contactForm"
+            class="contact-form"
+            action="#"
+            method="post"
+            onsubmit="return false;"
+          >
+            <label>
+              <input type="text" name="name" placeholder="Nom" required />
+            </label>
+            <label>
+              <input type="email" name="email" placeholder="Email" required />
+            </label>
+            <label>
+              <textarea
+                name="message"
+                rows="4"
+                placeholder="Votre message"
+                required
+              ></textarea>
+            </label>
+            <div class="form-actions">
+              <button class="btn primary" type="submit">Envoyer</button>
+              <a
+                class="btn outline"
+                href="https://wa.me/212600000000"
+                target="_blank"
+                rel="noreferrer"
+                >WhatsApp</a
+              >
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© <span id="year"></span> Yo Food — Tous droits réservés</p>
+        <div class="socials">
+          <a href="#" aria-label="Instagram">IG</a>
+          <a href="#" aria-label="TikTok">TT</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

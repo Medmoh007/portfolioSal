@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hors ligne - Yo Food</title>
+    <style>
+      :root {
+        --vert-vif: #00a650;
+        --orange-chaud: #ff6b00;
+        --blanc: #ffffff;
+        --noir: #1a1a1a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: linear-gradient(135deg, var(--vert-vif) 0%, #008c45 100%);
+        color: var(--blanc);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .offline-container {
+        max-width: 500px;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        color: var(--noir);
+      }
+
+      .logo {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin: 0 auto 20px;
+        border: 3px solid var(--orange-chaud);
+      }
+
+      h1 {
+        color: var(--vert-vif);
+        margin-bottom: 16px;
+        font-size: 2rem;
+      }
+
+      p {
+        margin-bottom: 24px;
+        line-height: 1.6;
+        color: #666;
+      }
+
+      .icon {
+        font-size: 64px;
+        margin-bottom: 20px;
+        color: var(--orange-chaud);
+      }
+
+      .btn {
+        background: linear-gradient(
+          135deg,
+          var(--orange-chaud) 0%,
+          #e55a00 100%
+        );
+        color: var(--blanc);
+        padding: 12px 24px;
+        border: none;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        transition: transform 0.3s ease;
+      }
+
+      .btn:hover {
+        transform: translateY(-2px);
+      }
+
+      .tips {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+      }
+
+      .tips h3 {
+        color: var(--vert-vif);
+        margin-bottom: 10px;
+      }
+
+      .tips ul {
+        text-align: left;
+        color: #666;
+      }
+
+      .tips li {
+        margin-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="offline-container">
+      <div class="icon">📶</div>
+      <h1>Oups ! Vous êtes hors ligne</h1>
+      <p>
+        Pas de souci ! Yo Food fonctionne partout, même sans connexion internet.
+      </p>
+      <p>
+        Une fois reconnecté, vous retrouverez toutes nos émissions et recettes.
+      </p>
+
+      <div class="tips">
+        <h3>En attendant :</h3>
+        <ul>
+          <li>📱 Vérifiez votre connexion Wi-Fi ou données mobiles</li>
+          <li>🔄 Réessayez en rafraîchissant la page</li>
+          <li>🍳 Pensez à vos prochaines recettes africaines !</li>
+        </ul>
+      </div>
+
+      <button class="btn" onclick="window.location.reload()">Réessayer</button>
+    </div>
+
+    <script>
+      // Vérifier périodiquement si la connexion revient
+      setInterval(() => {
+        fetch("/", { method: "HEAD", mode: "no-cors" })
+          .then(() => {
+            window.location.reload();
+          })
+          .catch(() => {
+            // Toujours hors ligne
+          });
+      }, 5000);
+
+      // Vérifier aussi quand la connexion revient
+      window.addEventListener("online", () => {
+        window.location.reload();
+      });
+    </script>
+  </body>
+</html>

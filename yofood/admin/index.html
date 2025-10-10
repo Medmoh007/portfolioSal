@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin - Yo Food!</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Poppins", sans-serif;
+        background: #f5f6fa;
+        color: #333;
+      }
+
+      header {
+        background: #4caf50;
+        color: white;
+        padding: 1rem 2rem;
+        text-align: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+
+      main {
+        max-width: 900px;
+        margin: 2rem auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: #ff9800;
+        margin-top: 2rem;
+      }
+
+      input,
+      textarea,
+      button {
+        width: 100%;
+        padding: 0.8rem;
+        margin: 0.5rem 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-family: inherit;
+      }
+
+      button {
+        background: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s;
+      }
+
+      button:hover {
+        background: #3e8e41;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 1.5rem;
+      }
+
+      th,
+      td {
+        padding: 0.8rem;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+      }
+
+      th {
+        background: #f0f0f0;
+      }
+
+      .success {
+        background: #d4edda;
+        color: #155724;
+        padding: 0.8rem;
+        border-radius: 5px;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>Admin - Yo Food!</header>
+    <main>
+      <section id="produits">
+        <h2>Ajouter un produit</h2>
+        <form id="formProduit">
+          <input
+            type="text"
+            id="nomProduit"
+            placeholder="Nom du produit"
+            required
+          />
+          <input type="text" id="prixProduit" placeholder="Prix (€)" required />
+          <input
+            type="url"
+            id="imageProduit"
+            placeholder="Lien image du produit"
+            required
+          />
+          <textarea
+            id="descProduit"
+            rows="3"
+            placeholder="Description du produit"
+          ></textarea>
+          <button type="submit">Ajouter</button>
+        </form>
+        <div id="produitMsg"></div>
+        <table id="listeProduits">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Prix (€)</th>
+              <th>Image</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section id="messages">
+        <h2>Messages reçus</h2>
+        <table id="listeMessages">
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Email</th>
+              <th>Message</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Chef Awa</td>
+              <td>chefawa@exemple.com</td>
+              <td>Je veux participer à l’émission.</td>
+            </tr>
+            <tr>
+              <td>Marque X</td>
+              <td>contact@marquex.com</td>
+              <td>Intéressé par un sponsoring.</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <script>
+      const form = document.getElementById("formProduit");
+      const tableBody = document.querySelector("#listeProduits tbody");
+      const produitMsg = document.getElementById("produitMsg");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const nom = document.getElementById("nomProduit").value;
+        const prix = document.getElementById("prixProduit").value;
+        const image = document.getElementById("imageProduit").value;
+        const desc = document.getElementById("descProduit").value;
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+        <td>${nom}</td>
+        <td>${prix}</td>
+        <td><img src="${image}" alt="${nom}" width="50"></td>
+        <td>${desc}</td>
+      `;
+        tableBody.appendChild(row);
+
+        produitMsg.innerHTML =
+          "<div class='success'>✅ Produit ajouté avec succès !</div>";
+        form.reset();
+
+        setTimeout(() => (produitMsg.innerHTML = ""), 3000);
+      });
+    </script>
+  </body>
+</html>

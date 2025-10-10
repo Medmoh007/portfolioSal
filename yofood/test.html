@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Yo Food! Une émission culinaire immersive qui valorise les talents et les saveurs africaines. Découvrez, échangez, savourez !"
+    />
+    <meta
+      name="keywords"
+      content="yo food, émission culinaire, gastronomie africaine, recettes, chefs africains, festival culinaire"
+    />
+    <title>Yo Food! - Émission Culinaire Immersive</title>
+    <link rel="icon" type="image/png" href="assets/YoFood.png" />
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Open+Sans:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom Styles -->
+    <style>
+      :root {
+        --primary-orange: #ff8300;
+        --primary-green: #074c4c;
+        --text-dark: #1f1f1f;
+        --beige: #eacfa6;
+        --light-beige: #f8f2e9;
+        --white: #ffffff;
+      }
+
+      body {
+        font-family: "Open Sans", sans-serif;
+        color: var(--text-dark);
+        background-color: var(--white);
+        overflow-x: hidden;
+        line-height: 1.6;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5 {
+        font-family: "Dancing Script", cursive;
+        font-weight: 600;
+      }
+
+      .section-padding {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        margin-bottom: 50px;
+        text-align: center;
+      }
+
+      .section-title h2 {
+        font-size: 2.8rem;
+        color: var(--primary-green);
+        margin-bottom: 15px;
+      }
+
+      .section-title p {
+        color: #666;
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      .btn-primary-custom {
+        background-color: var(--primary-orange);
+        color: var(--white);
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        border: none;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary-custom:hover {
+        background-color: #e67400;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .btn-secondary-custom {
+        background-color: var(--primary-green);
+        color: var(--white);
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        border: none;
+        transition: all 0.3s ease;
+      }
+
+      .btn-secondary-custom:hover {
+        background-color: #053535;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Header Styles */
+      .navbar {
+        padding: 15px 0;
+        transition: all 0.3s ease;
+        background-color: var(--white);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar-brand {
+        font-family: "Dancing Script", cursive;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--primary-green) !important;
+      }
+
+      .navbar-nav .nav-link {
+        color: var(--text-dark) !important;
+        font-weight: 600;
+        margin: 0 10px;
+        transition: color 0.3s ease;
+      }
+
+      .navbar-nav .nav-link:hover {
+        color: var(--primary-orange) !important;
+      }
+
+      .navbar-nav .nav-item.active .nav-link {
+        color: var(--primary-orange) !important;
+      }
+
+      /* Hero Section */
+      .hero-section {
+        background: linear-gradient(rgba(7, 76, 76, 0.8), rgba(7, 76, 76, 0.7)),
+          url("assets/images/hero-bg.jpg") no-repeat center center;
+        background-size: cover;
+        color: var(--white);
+        padding: 150px 0 100px;
+        text-align: center;
+      }
+
+      .hero-content h1 {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        color: var(--white);
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 30px;
+      }
+
+      /* Concept Section */
+      .concept-section {
+        background-color: var(--light-beige);
+      }
+
+      .concept-card {
+        background: var(--white);
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+        height: 100%;
+        text-align: center;
+      }
+
+      .concept-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .concept-icon {
+        font-size: 3rem;
+        color: var(--primary-orange);
+        margin-bottom: 20px;
+      }
+
+      .concept-card h3 {
+        color: var(--primary-green);
+        margin-bottom: 15px;
+      }
+
+      /* Episodes Section */
+      .episode-card {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+        transition: transform 0.3s ease;
+      }
+
+      .episode-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .episode-img {
+        height: 200px;
+        overflow: hidden;
+      }
+
+      .episode-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .episode-card:hover .episode-img img {
+        transform: scale(1.1);
+      }
+
+      .episode-content {
+        padding: 20px;
+        background: var(--white);
+      }
+
+      .episode-content h3 {
+        color: var(--primary-green);
+        margin-bottom: 10px;
+      }
+
+      .episode-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        font-size: 0.9rem;
+        color: #777;
+      }
+
+      /* Chefs Section */
+      .chefs-section {
+        background-color: var(--light-beige);
+      }
+
+      .chef-card {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .chef-img {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin: 0 auto 20px;
+        border: 5px solid var(--primary-orange);
+      }
+
+      .chef-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .chef-card h3 {
+        color: var(--primary-green);
+        margin-bottom: 5px;
+      }
+
+      .chef-card p {
+        color: var(--primary-orange);
+        font-style: italic;
+        margin-bottom: 15px;
+      }
+
+      /* Contact Section */
+      .contact-form {
+        background: var(--white);
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .form-control {
+        border-radius: 5px;
+        padding: 12px 15px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+      }
+
+      .form-control:focus {
+        border-color: var(--primary-orange);
+        box-shadow: 0 0 0 0.2rem rgba(255, 131, 0, 0.25);
+      }
+
+      /* Footer */
+      .footer {
+        background-color: var(--primary-green);
+        color: var(--white);
+        padding: 60px 0 20px;
+      }
+
+      .footer h4 {
+        color: var(--white);
+        margin-bottom: 20px;
+      }
+
+      .footer-logo {
+        font-family: "Dancing Script", cursive;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .footer p {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 10px;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--primary-orange);
+        text-decoration: none;
+      }
+
+      .social-links {
+        display: flex;
+        margin-top: 20px;
+      }
+
+      .social-links a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--white);
+        margin-right: 10px;
+        transition: all 0.3s ease;
+      }
+
+      .social-links a:hover {
+        background: var(--primary-orange);
+        transform: translateY(-3px);
+      }
+
+      .copyright {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 20px;
+        margin-top: 40px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero-content h1 {
+          font-size: 2.5rem;
+        }
+
+        .section-padding {
+          padding: 60px 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">Yo Food!</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#accueil">Accueil</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#concept">Concept</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#episodes">Épisodes</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#chefs">Chefs</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact">Contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="accueil">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Yo Food!</h1>
+          <p>
+            Une émission culinaire immersive qui célèbre les saveurs
+            authentiques et les talents émergents de la gastronomie africaine.
+          </p>
+          <a href="#episodes" class="btn btn-primary-custom"
+            >Découvrir les épisodes</a
+          >
+          <a href="#contact" class="btn btn-secondary-custom ml-3"
+            >Nous contacter</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Concept Section -->
+    <section class="section-padding concept-section" id="concept">
+      <div class="container">
+        <div class="section-title">
+          <h2>Notre Concept</h2>
+          <p>
+            Yo Food! est bien plus qu'une émission culinaire. C'est une
+            immersion totale dans l'univers riche et diversifié des saveurs
+            africaines.
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="concept-card">
+              <div class="concept-icon">
+                <i class="fa fa-cutlery"></i>
+              </div>
+              <h3>Découverte</h3>
+              <p>
+                Explorez la diversité culinaire africaine à travers des recettes
+                authentiques et des ingrédients locaux méconnus.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="concept-card">
+              <div class="concept-icon">
+                <i class="fa fa-users"></i>
+              </div>
+              <h3>Rencontres</h3>
+              <p>
+                Partez à la rencontre de chefs passionnés qui réinventent la
+                gastronomie africaine avec créativité et modernité.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <div class="concept-card">
+              <div class="concept-icon">
+                <i class="fa fa-heart"></i>
+              </div>
+              <h3>Partage</h3>
+              <p>
+                Vivez des expériences culinaires uniques et partagez des moments
+                authentiques autour de la table.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Episodes Section -->
+    <section class="section-padding" id="episodes">
+      <div class="container">
+        <div class="section-title">
+          <h2>Épisodes Récents</h2>
+          <p>
+            Découvrez nos dernières explorations culinaires à travers le
+            continent africain.
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="episode-card">
+              <div class="episode-img">
+                <img src="assets/images/episode1.jpg" alt="Épisode 1" />
+              </div>
+              <div class="episode-content">
+                <div class="episode-meta">
+                  <span>Saison 1, Épisode 3</span>
+                  <span>25 min</span>
+                </div>
+                <h3>Les Saveurs du Sénégal</h3>
+                <p>
+                  Découverte du Thiéboudienne avec Chef Aïda, qui revisite ce
+                  plat emblématique avec une touche contemporaine.
+                </p>
+                <a href="#" class="btn btn-primary-custom btn-sm"
+                  >Voir l'épisode</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="episode-card">
+              <div class="episode-img">
+                <img src="assets/images/episode2.jpg" alt="Épisode 2" />
+              </div>
+              <div class="episode-content">
+                <div class="episode-meta">
+                  <span>Saison 1, Épisode 2</span>
+                  <span>22 min</span>
+                </div>
+                <h3>Innovation Camerounaise</h3>
+                <p>
+                  Chef Samuel nous présente sa version modernisée du Ndolé,
+                  mariant tradition et techniques innovantes.
+                </p>
+                <a href="#" class="btn btn-primary-custom btn-sm"
+                  >Voir l'épisode</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-6">
+            <div class="episode-card">
+              <div class="episode-img">
+                <img src="assets/images/episode3.jpg" alt="Épisode 3" />
+              </div>
+              <div class="episode-content">
+                <div class="episode-meta">
+                  <span>Saison 1, Épisode 1</span>
+                  <span>28 min</span>
+                </div>
+                <h3>Trésors du Maroc</h3>
+                <p>
+                  Exploration des saveurs berbères avec Chef Fatima et sa
+                  réinterprétation du Tajine aux fruits secs.
+                </p>
+                <a href="#" class="btn btn-primary-custom btn-sm"
+                  >Voir l'épisode</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-4">
+          <a href="#" class="btn btn-secondary-custom"
+            >Voir tous les épisodes</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- Chefs Section -->
+    <section class="section-padding chefs-section" id="chefs">
+      <div class="container">
+        <div class="section-title">
+          <h2>Nos Chefs</h2>
+          <p>
+            Découvrez les talents qui font vibrer la gastronomie africaine
+            contemporaine.
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-6">
+            <div class="chef-card">
+              <div class="chef-img">
+                <img src="assets/images/chef1.jpg" alt="Chef Aïda" />
+              </div>
+              <h3>Chef Aïda</h3>
+              <p>Spécialiste des saveurs sénégalaises</p>
+              <p>
+                Réinvente la cuisine traditionnelle avec des techniques
+                modernes.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="chef-card">
+              <div class="chef-img">
+                <img src="assets/images/chef2.jpg" alt="Chef Samuel" />
+              </div>
+              <h3>Chef Samuel</h3>
+              <p>Innovateur camerounais</p>
+              <p>
+                Fusionne les ingrédients locaux avec des influences
+                internationales.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="chef-card">
+              <div class="chef-img">
+                <img src="assets/images/chef3.jpg" alt="Chef Fatima" />
+              </div>
+              <h3>Chef Fatima</h3>
+              <p>Ambassadrice de la cuisine berbère</p>
+              <p>
+                Préserve les traditions tout en les adaptant aux palais
+                contemporains.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6">
+            <div class="chef-card">
+              <div class="chef-img">
+                <img src="assets/images/chef4.jpg" alt="Chef Kwame" />
+              </div>
+              <h3>Chef Kwame</h3>
+              <p>Expert en saveurs ghanéennes</p>
+              <p>
+                Explore les possibilités infinies des épices ouest-africaines.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding" id="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contactez-nous</h2>
+          <p>
+            Vous souhaitez collaborer, participer à l'émission ou devenir
+            partenaire ? Contactez notre équipe.
+          </p>
+        </div>
+        <div class="row">
+          <div class="col-lg-8 mx-auto">
+            <div class="contact-form">
+              <form>
+                <div class="row">
+                  <div class="col-md-6">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Votre nom"
+                      required
+                    />
+                  </div>
+                  <div class="col-md-6">
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="Votre email"
+                      required
+                    />
+                  </div>
+                </div>
+                <input type="text" class="form-control" placeholder="Sujet" />
+                <textarea
+                  class="form-control"
+                  rows="5"
+                  placeholder="Votre message"
+                  required
+                ></textarea>
+                <button type="submit" class="btn btn-primary-custom btn-block">
+                  Envoyer le message
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 mb-4">
+            <a href="#" class="footer-logo">Yo Food!</a>
+            <p>
+              Une émission culinaire immersive qui valorise les talents et les
+              saveurs africaines. Découvrez, échangez, savourez !
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fa fa-facebook"></i></a>
+              <a href="#"><i class="fa fa-instagram"></i></a>
+              <a href="#"><i class="fa fa-youtube"></i></a>
+              <a href="#"><i class="fa fa-twitter"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 mb-4">
+            <h4>Liens rapides</h4>
+            <ul class="footer-links">
+              <li><a href="#accueil">Accueil</a></li>
+              <li><a href="#concept">Concept</a></li>
+              <li><a href="#episodes">Épisodes</a></li>
+              <li><a href="#chefs">Chefs</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h4>Contact</h4>
+            <ul class="footer-links">
+              <li><i class="fa fa-map-marker"></i> Paris, France</li>
+              <li><i class="fa fa-phone"></i> +33 1 23 45 67 89</li>
+              <li><i class="fa fa-envelope"></i> contact@yofood.tv</li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <h4>Newsletter</h4>
+            <p>
+              Abonnez-vous pour recevoir nos dernières actualités et nouveaux
+              épisodes.
+            </p>
+            <form>
+              <div class="input-group">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Votre email"
+                />
+                <div class="input-group-append">
+                  <button class="btn btn-primary-custom" type="button">
+                    <i class="fa fa-paper-plane"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2023 Yo Food! Tous droits réservés.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <script>
+      // Smooth scrolling for anchor links
+      $(document).ready(function () {
+        $("a").on("click", function (event) {
+          if (this.hash !== "") {
+            event.preventDefault();
+            var hash = this.hash;
+            $("html, body").animate(
+              {
+                scrollTop: $(hash).offset().top - 70,
+              },
+              800,
+              function () {
+                window.location.hash = hash;
+              }
+            );
+          }
+        });
+
+        // Navbar background on scroll
+        $(window).scroll(function () {
+          if ($(window).scrollTop() > 50) {
+            $(".navbar").addClass("navbar-scrolled");
+          } else {
+            $(".navbar").removeClass("navbar-scrolled");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
