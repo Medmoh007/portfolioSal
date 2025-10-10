@@ -57,6 +57,7 @@
         -webkit-font-smoothing: antialiased;
         scroll-behavior: smooth;
         line-height: 1.6;
+        overflow-x: hidden;
       }
 
       h1,
@@ -81,7 +82,8 @@
         display: block;
       }
 
-      /* Header transparent qui fusionne avec l'accueil */
+      /* === HEADER GLOBAL === */
+/* Header transparent qui fusionne avec l'accueil */
       header {
         position: fixed;
         left: 0;
@@ -235,7 +237,7 @@
         font-weight: 700;
       }
 
-      /* Hero avec fond vert transparent sur image de plat */
+      /* Hero avec animations améliorées */
       main {
         margin-top: 0;
       }
@@ -255,18 +257,43 @@
           url("assets/img/acc.png") center/cover no-repeat;
         color: var(--blanc);
         position: relative;
+        overflow: hidden;
+      }
+
+      .hero:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(
+          circle at center,
+          transparent 0%,
+          rgba(0, 0, 0, 0.3) 100%
+        );
+        z-index: 1;
       }
 
       .hero-inner {
         max-width: 1000px;
         padding: 80px 40px;
-        background: rgba(255, 255, 255, 0.75);
+        background: rgba(255, 255, 255, 0.85);
         border-radius: var(--radius);
         box-shadow: var(--shadow-hover);
         color: var(--noir);
         backdrop-filter: blur(10px);
         animation: fadeInUp 0.8s ease forwards;
         margin-top: 60px;
+        position: relative;
+        z-index: 2;
+        transform: translateY(30px);
+        opacity: 0;
+      }
+
+      .hero-inner.animated {
+        transform: translateY(0);
+        opacity: 1;
       }
 
       .eyebrow {
@@ -281,6 +308,19 @@
         text-transform: uppercase;
         letter-spacing: 1px;
         box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
       }
 
       .hero h2 {
@@ -289,6 +329,19 @@
         color: var(--vert-vif);
         margin: 16px 0;
         line-height: 1.1;
+        position: relative;
+      }
+
+      .hero h2:after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 3px;
+        background: var(--orange-chaud);
+        border-radius: 2px;
       }
 
       .hero p {
@@ -331,21 +384,21 @@
         content: "";
         position: absolute;
         top: 0;
-        left: -15%;
+        left: -100%;
         width: 100%;
         height: 100%;
         background: linear-gradient(
           90deg,
           transparent,
-          rgba(255, 255, 255, 0.1),
+          rgba(255, 255, 255, 0.2),
           transparent
         );
-        transition: 0.2s;
+        transition: 0.5s;
       }
 
       .btn:hover {
-        transform: translateY(-20px);
-        box-shadow: var(--shadow-hover);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 107, 0, 0.4);
       }
 
       .btn:hover:before {
@@ -362,7 +415,7 @@
       .btn.secondary:hover {
         background: var(--vert-vif);
         color: var(--blanc);
-        transform: translateY(-4px);
+        transform: translateY(-3px);
         box-shadow: 0 8px 25px rgba(0, 166, 80, 0.3);
       }
 
@@ -393,7 +446,7 @@
 
       /* Sections alternées */
       .section-white {
-        background: var(--beige);
+        background: var(--blanc);
       }
 
       .section-green {
@@ -424,6 +477,40 @@
         color: var(--blanc);
       }
 
+      /* Animations au défilement */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .slide-in-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        transition: all 0.6s ease;
+      }
+
+      .slide-in-left.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .slide-in-right {
+        opacity: 0;
+        transform: translateX(50px);
+        transition: all 0.6s ease;
+      }
+
+      .slide-in-right.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
       /* About */
       .about-grid {
         display: grid;
@@ -431,7 +518,6 @@
         gap: 60px;
         align-items: center;
         margin-top: 40px;
-        margin: 5px;
       }
 
       .about-img {
@@ -477,15 +563,15 @@
       .services-grid {
         display: flex;
         flex-wrap: wrap;
-        justify-content: center; /* centre horizontalement */
-        align-items: stretch; /* égalise la hauteur */
-        gap: 30px; /* espace entre les cartes */
+        justify-content: center;
+        align-items: stretch;
+        gap: 30px;
         margin-top: 40px;
         padding: 10px 5px;
       }
 
       .service-card {
-        flex: 1 1 280px; /* largeur minimale 280px */
+        flex: 1 1 280px;
         max-width: 330px;
         background: var(--blanc);
         padding: 25px 20px;
@@ -496,6 +582,7 @@
         border: 1px solid rgba(0, 166, 80, 0.1);
         position: relative;
         overflow: hidden;
+        transform: translateY(0);
       }
 
       .service-card:before {
@@ -513,7 +600,7 @@
       }
 
       .service-card:hover {
-        transform: translateY(-8px);
+        transform: translateY(-10px);
         box-shadow: var(--shadow-hover);
       }
 
@@ -531,6 +618,11 @@
           var(--orange-chaud) 100%
         );
         box-shadow: 0 8px 20px rgba(0, 166, 80, 0.3);
+        transition: var(--transition);
+      }
+
+      .service-card:hover .service-icon {
+        transform: scale(1.1) rotate(5deg);
       }
 
       .service-icon i {
@@ -549,7 +641,7 @@
         line-height: 1.6;
       }
 
-    /* Émissions améliorées avec vidéos */
+      /* Émissions améliorées avec vidéos */
       .slider-container {
         max-width: 1100px;
         margin: 0 auto;
@@ -589,14 +681,22 @@
         right: 0;
         bottom: 0;
         padding: 40px;
-        background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(0, 0, 0, 0.8) 100%
+        );
         color: var(--blanc);
         transform: translateY(0);
         transition: var(--transition);
       }
 
       .slide:hover .slide-content {
-        background: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.9) 100%);
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(0, 0, 0, 0.9) 100%
+        );
       }
 
       .slide-content h3 {
@@ -633,7 +733,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: var(--transition 60s);
+        transition: var(--transition);
         color: var(--vert-vif);
       }
 
@@ -677,7 +777,7 @@
         width: 100%;
         height: 100%;
         overflow: hidden;
-        border-radius: 10px; /* optionnel */
+        border-radius: 10px;
       }
 
       .video-wrapper iframe {
@@ -701,7 +801,6 @@
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
       }
 
-
       /* Galerie */
       .gallery-grid {
         display: grid;
@@ -718,10 +817,11 @@
         cursor: pointer;
         box-shadow: var(--shadow);
         transition: var(--transition);
+        transform: scale(1);
       }
 
       .gallery-item:hover {
-        transform: translateY(-8px);
+        transform: translateY(-8px) scale(1.02);
         box-shadow: var(--shadow-hover);
       }
 
@@ -769,7 +869,7 @@
       /* Boutique */
       .products-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr); /* 3 cartes sur la deuxième ligne */
+        grid-template-columns: repeat(3, 1fr);
         gap: 30px;
         justify-items: center;
         align-items: stretch;
@@ -777,7 +877,7 @@
       }
 
       .product-card:nth-child(4) {
-        grid-column: 2 / 3; /* place la première carte au centre, sur la première ligne */
+        grid-column: 2 / 3;
       }
 
       .product-card {
@@ -792,6 +892,12 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        transform: translateY(0);
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
       }
 
       /* image */
@@ -871,7 +977,11 @@
       /* bouton ajouter */
       .btn.add-to-cart {
         flex: 1;
-        background: linear-gradient(135deg, var(--orange-chaud), var(--orange-fonce));
+        background: linear-gradient(
+          135deg,
+          var(--orange-chaud),
+          var(--orange-fonce)
+        );
         color: var(--blanc);
         padding: 10px 20px;
         border-radius: 50px;
@@ -886,27 +996,6 @@
         transform: translateY(-3px);
         box-shadow: var(--shadow-hover);
       }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        .products-grid {
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 20px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .products-grid {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
-
-        .product-card {
-          max-width: 100%;
-        }
-      }
-
-
 
       /* Témoignages */
       .testimonials-grid {
@@ -924,6 +1013,13 @@
         position: relative;
         backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.2);
+        transform: translateY(0);
+        transition: var(--transition);
+      }
+
+      .testimonial-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
       }
 
       .testimonial-card:before {
@@ -984,18 +1080,26 @@
         margin-bottom: 32px;
         align-items: center;
       }
-      
-      
+
       .contact-icon {
         width: 65px;
         height: 65px;
         border-radius: 16px;
-        background: linear-gradient(135deg, var(--vert-vif) 0%, var(--orange-chaud) 100%);
+        background: linear-gradient(
+          135deg,
+          var(--vert-vif) 0%,
+          var(--orange-chaud) 100%
+        );
         display: flex;
         align-items: center;
         justify-content: center;
         flex-shrink: 0;
         box-shadow: 0 4px 15px rgba(0, 166, 80, 0.3);
+        transition: var(--transition);
+      }
+
+      .contact-item:hover .contact-icon {
+        transform: scale(1.1) rotate(5deg);
       }
 
       .contact-icon i {
@@ -1050,7 +1154,11 @@
 
       .contact-form .btn {
         width: 100%;
-        background: linear-gradient(135deg, var(--orange-chaud), var(--orange-fonce));
+        background: linear-gradient(
+          135deg,
+          var(--orange-chaud),
+          var(--orange-fonce)
+        );
         color: var(--blanc);
         padding: 14px 0;
         font-weight: 700;
@@ -1066,19 +1174,7 @@
         box-shadow: var(--shadow-hover);
       }
 
-      /* Responsive */
-      @media (max-width: 992px) {
-        .contact-grid {
-          grid-template-columns: 1fr;
-          gap: 40px;
-        }
-
-        .contact-form {
-          padding: 30px 24px;
-        }
-      }
-
-      /*FOOTER */
+      /* Footer */
       footer {
         background: linear-gradient(
           135deg,
@@ -1115,7 +1211,6 @@
         margin-bottom: 20px;
         color: var(--orange-chaud);
         font-size: 1.6rem;
-        font-family: "Lobster", cursive;
       }
 
       .footer-col p {
@@ -1188,17 +1283,17 @@
         border-radius: 30px;
         border: none;
         background: rgba(255, 255, 255, 0.9);
-        color: var(--blanc);
+        color: var(--noir);
         transition: all 0.3s ease;
       }
 
       .newsletter-form .form-control::placeholder {
-        color: var(--noir);
+        color: var(--gris-moyen);
       }
 
       .newsletter-form .form-control:focus {
         outline: none;
-        background: rgba(255, 255, 255, 0.25);
+        background: rgba(255, 255, 255, 1);
       }
 
       .newsletter-form .btn {
@@ -1219,12 +1314,15 @@
       }
 
       /* Footer Bottom */
-      .footer-bottom p {
-        font-size: 0.95rem;
-        opacity: 0.9;
+      .footer-bottom {
+        margin-top: 40px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.8);
+        padding-top: 40px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
       }
 
-      /*LIGHTBOX*/
+      /* Lightbox */
       .lightbox {
         position: fixed;
         inset: 0;
@@ -1307,25 +1405,6 @@
       .lightbox-nav button:hover {
         background: var(--orange-chaud);
         transform: scale(1.1);
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        footer {
-          text-align: center;
-        }
-
-        .social-links {
-          justify-content: center;
-        }
-
-        .newsletter-form {
-          align-items: center;
-        }
-
-        .newsletter-form .btn {
-          width: auto;
-        }
       }
 
       /* Panier */
@@ -1445,7 +1524,7 @@
         display: block;
       }
 
-      /* Responsive */
+      /* Responsive amélioré */
       @media (max-width: 1200px) {
         .container {
           max-width: 1000px;
@@ -1467,29 +1546,102 @@
           gap: 40px;
         }
 
+        .products-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .product-card:nth-child(4) {
+          grid-column: auto;
+        }
+
         .hero h2 {
+          font-size: 2.4rem;
+        }
+        
+        .section-title h2 {
           font-size: 2.4rem;
         }
       }
 
       @media (max-width: 768px) {
+        .header-grid {
+          padding: 8px 0;
+        }
+        
+        .brand img {
+          width: 60px;
+          height: 60px;
+        }
+
         nav ul {
           position: fixed;
           left: -100%;
-          top: 74px;
-          width: 85%;
-          height: calc(100vh - 74px);
+          top: 0;
+          width: 280px;
+          height: 100vh;
           background: var(--vert-transparent);
           backdrop-filter: blur(20px);
           flex-direction: column;
-          padding: 40px 32px;
-          gap: 24px;
+          padding: 100px 32px 40px;
+          gap: 20px;
           transition: var(--transition);
           z-index: 1100;
+          box-shadow: 5px 0 25px rgba(0, 0, 0, 0.1);
         }
 
         nav ul.active {
           left: 0;
+          animation: slideInRight 0.3s ease;
+        }
+
+        @keyframes slideInRight {
+          from {
+            left: -100%;
+          }
+          to {
+            left: 0;
+          }
+        }
+
+        nav a {
+          display: block;
+          padding: 15px 20px;
+          border-radius: var(--radius);
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
+          transform: translateX(-20px);
+          opacity: 0;
+          transition: all 0.3s ease;
+        }
+
+        nav ul.active a {
+          transform: translateX(0);
+          opacity: 1;
+        }
+
+        nav ul.active a:nth-child(1) {
+          transition-delay: 0.1s;
+        }
+        nav ul.active a:nth-child(2) {
+          transition-delay: 0.2s;
+        }
+        nav ul.active a:nth-child(3) {
+          transition-delay: 0.3s;
+        }
+        nav ul.active a:nth-child(4) {
+          transition-delay: 0.4s;
+        }
+        nav ul.active a:nth-child(5) {
+          transition-delay: 0.5s;
+        }
+        nav ul.active a:nth-child(6) {
+          transition-delay: 0.6s;
+        }
+        nav ul.active a:nth-child(7) {
+          transition-delay: 0.7s;
+        }
+        nav ul.active a:nth-child(8) {
+          transition-delay: 0.8s;
         }
 
         .hamburger {
@@ -1515,17 +1667,13 @@
           max-width: 300px;
         }
 
-        .slide img {
+        .slide img,
+        .slide video {
           height: 400px;
         }
 
-        .newsletter-form {
-          flex-direction: column;
-        }
-
-        .cart-panel {
-          width: 100%;
-          right: -100%;
+        .products-grid {
+          grid-template-columns: 1fr;
         }
 
         .services-grid {
@@ -1533,17 +1681,23 @@
           align-items: center;
         }
         .service-card {
-          width: 90%;
+          width: 100%;
+          max-width: 400px;
+        }
+        
+        .cart-panel {
+          width: 100%;
+          right: -100%;
+        }
+        
+        section {
+          padding: 80px 0;
         }
       }
 
       @media (max-width: 480px) {
         .container {
           padding: 0 16px;
-        }
-
-        .slide img {
-          height: 300px;
         }
 
         .brand h1 {
@@ -1565,6 +1719,24 @@
         .cart-panel {
           padding: 20px;
         }
+
+        .hero-cta .btn {
+          padding: 14px 24px;
+          font-size: 0.9rem;
+        }
+        
+        .slide img,
+        .slide video {
+          height: 300px;
+        }
+        
+        .slide-content {
+          padding: 20px;
+        }
+        
+        .slide-content h3 {
+          font-size: 1.4rem;
+        }
       }
 
       /* Animations */
@@ -1579,10 +1751,6 @@
         }
       }
 
-      .fade-in {
-        animation: fadeInUp 0.8s ease forwards;
-      }
-
       .delay-1 {
         animation-delay: 0.2s;
       }
@@ -1595,6 +1763,7 @@
         animation-delay: 0.6s;
       }
     </style>
+
   </head>
 
   <body>
@@ -1603,7 +1772,7 @@
       <div class="container header-grid">
         <div class="brand">
           <img src="assets/img/logo.jpg" alt="Yo Food Logo" />
-          <!--  <h1>Yo <span>Food</span></h1> -->
+          <!-- <h1>Yo <span>Food</span></h1> -->
         </div>
 
         <nav aria-label="Navigation principale">
@@ -1634,7 +1803,7 @@
     <main>
       <!-- Hero avec fond vert transparent sur image de plat -->
       <section id="home" class="hero">
-        <div class="hero-inner container fade-in">
+        <div class="hero-inner container">
           <span class="eyebrow">Émission Culinaire Immersive</span>
           <h2>Vous cuisinez, On s'occupe de vous faire briller !</h2>
           <p class="lead">
@@ -1662,7 +1831,7 @@
           </div>
 
           <div class="about-grid">
-            <div class="about-img fade-in">
+            <div class="about-img slide-in-left">
               <img
                 src="assets/img/nous.png"
                 alt="Équipe Yo Food"
@@ -1670,7 +1839,7 @@
               />
             </div>
 
-            <div class="about-text fade-in delay-1">
+            <div class="about-text slide-in-right">
               <h3>Notre Mission</h3>
               <p>
                 Nous mettons en lumière les restaurateurs, chefs et créateurs
@@ -1748,63 +1917,58 @@
         <div class="container">
           <div class="section-title fade-in">
             <h2>Nos Émissions</h2>
-            <p class="lead">Découvrez nos vidéos immersives en slider - des expériences culinaires uniques à travers l'Afrique</p>
+            <p class="lead">
+              Découvrez nos vidéos immersives en slider - des expériences
+              culinaires uniques à travers l'Afrique
+            </p>
           </div>
 
           <div class="slider-container fade-in">
             <div class="slides">
               <!-- Slide 1 -->
-               <div class="slide">
-                  <div class="video-wrapper">
-                    <iframe 
-                      src="https://www.youtube.com/embed/WuczE8jTa4o?autoplay=1&mute=1&loop=1&playlist=WuczE8jTa4o"
-                      frameborder="0"
-                      allow="autoplay; encrypted-media"
-                      allowfullscreen
-                      playsinline>
-                    </iframe>
-                  </div>
-                  <div class="slide-content">
-                    <h3>interview</h3>
-                    <p>Découverte du festival de food trucks "Yo Food"  </p>
-                  </div>
-                </div>
-
-              <!-- Slide 2 -->
-                <div class="slide">
-                  <a href="https://www.youtube.com/@yofood11?si=--2dt35z0774EIZW" target="_blank">
-                    <img src="assets/img/epi2.jpg" alt="Épisode 1 - Street Food Raffinée" class="video-thumbnail">
-                  </a>
-                  <div class="slide-content">
-                    <h3>Épisode 1 : Street Food Raffinée</h3>
-                    <p>Recette revisitée avec une cheffe malienne étoilée</p>
-                  </div>
-                </div>
-
-
-              <!-- Slide 3
               <div class="slide">
-                <img src="assets/img/emission-3.jpg" alt="Émission 3 - Cuisine Sénégalaise" loading="lazy">
-                <div class="slide-content">
-                  <h3>Épisode 3 : Trésors du Sénégal</h3>
-                  <p>Exploration des saveurs authentiques de Dakar</p>
+                <div class="video-wrapper">
+                  <iframe
+                    src="https://www.youtube.com/embed/WuczE8jTa4o?autoplay=1&mute=1&loop=1&playlist=WuczE8jTa4o"
+                    frameborder="0"
+                    allow="autoplay; encrypted-media"
+                    allowfullscreen
+                    playsinline
+                  ></iframe>
                 </div>
-              </div> -->
-
-              <!-- Slide 4
-              <div class="slide">
-                <video src="assets/videos/video4.mp4" autoplay muted loop playsinline></video>
                 <div class="slide-content">
-                  <h3>Épisode 4 : Innovation Culinaire</h3>
-                  <p>Fusion entre tradition et modernité en Côte d'Ivoire</p>
+                  <h3>Interview</h3>
+                  <p>Découverte du festival de food trucks "Yo Food"</p>
                 </div>
               </div>
-            </div> -->
+
+              <!-- Slide 2 -->
+              <div class="slide">
+                <a
+                  href="https://www.youtube.com/@yofood11?si=--2dt35z0774EIZW"
+                  target="_blank"
+                >
+                  <img
+                    src="assets/img/epi2.jpg"
+                    alt="Épisode 1 - Street Food Raffinée"
+                    class="video-thumbnail"
+                  />
+                </a>
+                <div class="slide-content">
+                  <h3>Épisode 1 : Street Food Raffinée</h3>
+                  <p>Recette revisitée avec une cheffe malienne étoilée</p>
+                </div>
+              </div>
+            </div>
 
             <!-- Navigation -->
             <div class="slider-nav">
-              <button class="prev" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
-              <button class="next" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
+              <button class="prev" aria-label="Précédent">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="next" aria-label="Suivant">
+                <i class="fas fa-chevron-right"></i>
+              </button>
             </div>
           </div>
 
@@ -1812,8 +1976,6 @@
           <div class="slider-dots" role="tablist" aria-label="Navigation slides">
             <span class="dot active" role="tab" aria-label="Slide 1"></span>
             <span class="dot" role="tab" aria-label="Slide 2"></span>
-            <!-- <span class="dot" role="tab" aria-label="Slide 3"></span>
-            <span class="dot" role="tab" aria-label="Slide 4"></span> -->
           </div>
         </div>
       </section>
@@ -1865,20 +2027,20 @@
                 <i class="fas fa-search-plus"></i>
               </div>
             </div>
-             <div class="gallery-item fade-in">
-              <img src="assets/img/7.JPG" alt="Plat 5" loading="lazy" />
+            <div class="gallery-item fade-in">
+              <img src="assets/img/7.JPG" alt="Plat 7" loading="lazy" />
               <div class="gallery-overlay">
                 <i class="fas fa-search-plus"></i>
               </div>
             </div>
-             <div class="gallery-item fade-in">
-              <img src="assets/img/8.JPG" alt="Plat 5" loading="lazy" />
+            <div class="gallery-item fade-in">
+              <img src="assets/img/8.JPG" alt="Plat 8" loading="lazy" />
               <div class="gallery-overlay">
                 <i class="fas fa-search-plus"></i>
               </div>
             </div>
-             <div class="gallery-item fade-in">
-              <img src="assets/img/9.JPG" alt="Plat 5" loading="lazy" />
+            <div class="gallery-item fade-in">
+              <img src="assets/img/9.JPG" alt="Plat 9" loading="lazy" />
               <div class="gallery-overlay">
                 <i class="fas fa-search-plus"></i>
               </div>
@@ -2112,11 +2274,7 @@
                 savoir-faire local.
               </div>
               <div class="testimonial-author">
-                <img
-                  src="assets/img/test1.png"
-                  alt="Fatou"
-                  loading="lazy"
-                />
+                <img src="assets/img/test1.png" alt="Fatou" loading="lazy" />
                 <div class="author-info">
                   <h4>Fatou Diop</h4>
                   <p>Chef & Restauratrice</p>
@@ -2178,7 +2336,6 @@
           </div>
         </div>
       </section>
-
 
       <!-- Footer -->
       <footer>
@@ -2248,16 +2405,7 @@
             </div>
           </div>
 
-          <div
-            class="footer-bottom"
-            style="
-              margin-top: 40px;
-              text-align: center;
-              color: rgba(255, 255, 255, 0.8);
-              padding-top: 40px;
-              border-top: 1px solid rgba(255, 255, 255, 0.1);
-            "
-          >
+          <div class="footer-bottom">
             <p>&copy; <span id="year"></span> Yo Food — Tous droits réservés</p>
           </div>
         </div>
@@ -2280,181 +2428,302 @@
 
       <script>
         // ---------- Utilities ----------
-        const $ = sel => document.querySelector(sel);
-        const $$ = sel => Array.from(document.querySelectorAll(sel));
+        const $ = (sel) => document.querySelector(sel);
+        const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 
         // Update year in footer
-        document.getElementById('year').textContent = new Date().getFullYear();
+        document.getElementById("year").textContent = new Date().getFullYear();
 
         // ---------- Header behavior ----------
-        const header = $('header');
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 60) header.classList.add('scrolled'); else header.classList.remove('scrolled');
+        const header = $("header");
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener("scroll", () => {
+          if (window.scrollY > 60) {
+            header.classList.add("scrolled");
+
+            // Masquer le header au scroll vers le bas
+            if (window.scrollY > lastScrollY && window.scrollY > 100) {
+              header.classList.add("hidden");
+            } else {
+              header.classList.remove("hidden");
+            }
+          } else {
+            header.classList.remove("scrolled", "hidden");
+          }
+
+          lastScrollY = window.scrollY;
           updateActiveLinkOnScroll();
         });
 
-        // Mobile menu
-        const hamburger = $('.hamburger');
-        const navList = document.querySelector('nav ul');
-        if(hamburger){
-          hamburger.addEventListener('click', () => {
-            navList.classList.toggle('active');
-            hamburger.setAttribute('aria-expanded', navList.classList.contains('active'));
+        // ---------- Menu mobile amélioré ----------
+        const hamburger = $(".hamburger");
+        const navList = document.querySelector("nav ul");
+        const navLinks = document.querySelectorAll("nav a");
+
+        if (hamburger) {
+          hamburger.addEventListener("click", () => {
+            navList.classList.toggle("active");
+            hamburger.classList.toggle("active");
+            hamburger.setAttribute(
+              "aria-expanded",
+              navList.classList.contains("active")
+            );
+
+            // Animation de l'icône hamburger
+            if (navList.classList.contains("active")) {
+              hamburger.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+              hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }
           });
         }
-        // Close mobile nav when link clicked
-        $$('nav a').forEach(a => a.addEventListener('click', () => {
-          navList.classList.remove('active');
-          hamburger.setAttribute('aria-expanded', 'false');
-        }));
 
-        // Smooth scroll behavior for nav
-        $$('a[href^="#"]').forEach(anchor => {
-          anchor.addEventListener('click', function(e){
-            const target = document.querySelector(this.getAttribute('href'));
-            if(!target) return;
-            e.preventDefault();
-            const offset = 80;
-            const top = target.offsetTop - offset;
-            window.scrollTo({top, behavior:'smooth'});
+        // Fermer le menu mobile en cliquant sur un lien
+        navLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            navList.classList.remove("active");
+            hamburger.classList.remove("active");
+            hamburger.setAttribute("aria-expanded", "false");
+            hamburger.innerHTML = '<i class="fas fa-bars"></i>';
           });
         });
 
-        // ---------- Active nav on scroll ----------
-        const sections = $$('main section[id], main > section[id]');
-        const navLinks = $$('nav a');
+        // ---------- Animations au défilement ----------
+        const observerOptions = {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        };
 
-        function updateActiveLinkOnScroll(){
-          let current = null;
-          sections.forEach(sec => {
-            const top = sec.offsetTop - 120;
-            if(window.scrollY >= top) current = sec.getAttribute('id');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+
+              // Animation spécifique pour le hero
+              if (entry.target.classList.contains("hero-inner")) {
+                setTimeout(() => {
+                  entry.target.classList.add("animated");
+                }, 300);
+              }
+            }
           });
-          if(current){
-            navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#'+current));
-          }
+        }, observerOptions);
+
+        // Observer les éléments à animer
+        document
+          .querySelectorAll(".fade-in, .slide-in-left, .slide-in-right, .hero-inner")
+          .forEach((el) => {
+            observer.observe(el);
+          });
+
+        // ---------- Smooth scroll ----------
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              const offset = 80;
+              const top = target.offsetTop - offset;
+              window.scrollTo({
+                top,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+
+        // ---------- Navigation active ----------
+        const sections = $$("main section[id]");
+
+        function updateActiveLinkOnScroll() {
+          let current = "";
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 100;
+            const sectionHeight = section.clientHeight;
+            if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((link) => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === `#${current}`) {
+              link.classList.add("active");
+            }
+          });
         }
-        updateActiveLinkOnScroll();
+
+        // ---------- Animation au chargement ----------
+        window.addEventListener("load", () => {
+          document.querySelector(".hero-inner").classList.add("animated");
+        });
 
         // ---------- Slider (Emissions) ----------
-        const slidesWrap = $('.slides');
-        const slideItems = $$('.slide');
-        const dots = $$('.dot');
-        const prevBtn = $('.prev');
-        const nextBtn = $('.next');
+        const slidesWrap = $(".slides");
+        const slideItems = $$(".slide");
+        const dots = $$(".dot");
+        const prevBtn = $(".prev");
+        const nextBtn = $(".next");
         let currentSlide = 0;
         const slideCount = slideItems.length || 1;
 
-        function goToSlide(index){
+        function goToSlide(index) {
           currentSlide = (index + slideCount) % slideCount;
           slidesWrap.style.transform = `translateX(-${currentSlide * 100}%)`;
-          dots.forEach((d,i)=> d.classList.toggle('active', i===currentSlide));
+          dots.forEach((d, i) => d.classList.toggle("active", i === currentSlide));
         }
 
-        if(nextBtn) nextBtn.addEventListener('click', ()=>{ goToSlide(currentSlide+1); resetSlideInterval();});
-        if(prevBtn) prevBtn.addEventListener('click', ()=>{ goToSlide(currentSlide-1); resetSlideInterval();});
-        dots.forEach((dot, i) => dot.addEventListener('click', ()=>{ goToSlide(i); resetSlideInterval(); }));
+        if (nextBtn)
+          nextBtn.addEventListener("click", () => {
+            goToSlide(currentSlide + 1);
+            resetSlideInterval();
+          });
+        if (prevBtn)
+          prevBtn.addEventListener("click", () => {
+            goToSlide(currentSlide - 1);
+            resetSlideInterval();
+          });
+        dots.forEach((dot, i) =>
+          dot.addEventListener("click", () => {
+            goToSlide(i);
+            resetSlideInterval();
+          })
+        );
 
-        let slideInterval = setInterval(()=> goToSlide(currentSlide+1), 30000);
-        function resetSlideInterval(){ clearInterval(slideInterval); slideInterval = setInterval(()=> goToSlide(currentSlide+1), 30000); }
+        let slideInterval = setInterval(() => goToSlide(currentSlide + 1), 30000);
+        function resetSlideInterval() {
+          clearInterval(slideInterval);
+          slideInterval = setInterval(() => goToSlide(currentSlide + 1), 30000);
+        }
 
         // ---------- Gallery Lightbox ----------
-        const galleryItems = $$('.gallery-item');
-        const lightbox = $('.lightbox');
-        const lightboxImg = lightbox ? lightbox.querySelector('.lightbox-content img') : null;
-        const lightboxClose = lightbox ? lightbox.querySelector('.lightbox-close') : null;
-        const lightboxPrev = lightbox ? lightbox.querySelector('.lightbox-prev') : null;
-        const lightboxNext = lightbox ? lightbox.querySelector('.lightbox-next') : null;
+        const galleryItems = $$(".gallery-item");
+        const lightbox = $(".lightbox");
+        const lightboxImg = lightbox
+          ? lightbox.querySelector(".lightbox-content img")
+          : null;
+        const lightboxClose = lightbox
+          ? lightbox.querySelector(".lightbox-close")
+          : null;
+        const lightboxPrev = lightbox
+          ? lightbox.querySelector(".lightbox-prev")
+          : null;
+        const lightboxNext = lightbox
+          ? lightbox.querySelector(".lightbox-next")
+          : null;
         let galleryImages = [];
         let currentImageIndex = 0;
-        if(galleryItems.length){
-          galleryImages = galleryItems.map(it => it.querySelector('img').src);
+        if (galleryItems.length) {
+          galleryImages = galleryItems.map((it) => it.querySelector("img").src);
           galleryItems.forEach((it, idx) => {
-            it.addEventListener('click', ()=> openLightbox(idx));
+            it.addEventListener("click", () => openLightbox(idx));
           });
         }
 
-        function openLightbox(index){
+        function openLightbox(index) {
           currentImageIndex = index;
-          if(lightboxImg) lightboxImg.src = galleryImages[currentImageIndex];
-          if(lightbox) { 
-            lightbox.classList.add('active'); 
-            document.body.style.overflow = 'hidden'; 
-            lightbox.setAttribute('aria-hidden', 'false');
+          if (lightboxImg) lightboxImg.src = galleryImages[currentImageIndex];
+          if (lightbox) {
+            lightbox.classList.add("active");
+            document.body.style.overflow = "hidden";
+            lightbox.setAttribute("aria-hidden", "false");
           }
         }
-        function closeLightbox(){ 
-          if(lightbox){ 
-            lightbox.classList.remove('active'); 
-            document.body.style.overflow = 'auto'; 
-            lightbox.setAttribute('aria-hidden', 'true');
-          } 
+        function closeLightbox() {
+          if (lightbox) {
+            lightbox.classList.remove("active");
+            document.body.style.overflow = "auto";
+            lightbox.setAttribute("aria-hidden", "true");
+          }
         }
-        function nextImage(){ currentImageIndex = (currentImageIndex+1) % galleryImages.length; if(lightboxImg) lightboxImg.src = galleryImages[currentImageIndex]; }
-        function prevImage(){ currentImageIndex = (currentImageIndex-1 + galleryImages.length) % galleryImages.length; if(lightboxImg) lightboxImg.src = galleryImages[currentImageIndex]; }
+        function nextImage() {
+          currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+          if (lightboxImg) lightboxImg.src = galleryImages[currentImageIndex];
+        }
+        function prevImage() {
+          currentImageIndex =
+            (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+          if (lightboxImg) lightboxImg.src = galleryImages[currentImageIndex];
+        }
 
-        if(lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-        if(lightboxNext) lightboxNext.addEventListener('click', nextImage);
-        if(lightboxPrev) lightboxPrev.addEventListener('click', prevImage);
-        if(lightbox) lightbox.addEventListener('click', (e)=> { if(e.target === lightbox) closeLightbox(); });
-        document.addEventListener('keydown', (e)=> {
-          if(!lightbox || !lightbox.classList.contains('active')) return;
-          if(e.key === 'Escape') closeLightbox();
-          if(e.key === 'ArrowRight') nextImage();
-          if(e.key === 'ArrowLeft') prevImage();
+        if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
+        if (lightboxNext) lightboxNext.addEventListener("click", nextImage);
+        if (lightboxPrev) lightboxPrev.addEventListener("click", prevImage);
+        if (lightbox)
+          lightbox.addEventListener("click", (e) => {
+            if (e.target === lightbox) closeLightbox();
+          });
+        document.addEventListener("keydown", (e) => {
+          if (!lightbox || !lightbox.classList.contains("active")) return;
+          if (e.key === "Escape") closeLightbox();
+          if (e.key === "ArrowRight") nextImage();
+          if (e.key === "ArrowLeft") prevImage();
         });
 
         // ---------- Cart / Shop functionality ----------
-        const cartIcon = $('.cart-icon');
-        const cartPanel = $('.cart-panel');
-        const cartClose = $('.cart-close');
-        const overlay = $('.overlay');
-        const cartItemsContainer = $('.cart-items');
-        const cartCountEl = $('.cart-count');
-        const totalAmountEl = $('.total-amount');
-        const checkoutBtn = $('#checkout-btn');
-        const continueShopping = $('#continue-shopping');
-        const addToCartButtons = $$('.add-to-cart');
+        const cartIcon = $(".cart-icon");
+        const cartPanel = $(".cart-panel");
+        const cartClose = $(".cart-close");
+        const overlay = $(".overlay");
+        const cartItemsContainer = $(".cart-items");
+        const cartCountEl = $(".cart-count");
+        const totalAmountEl = $(".total-amount");
+        const checkoutBtn = $("#checkout-btn");
+        const continueShopping = $("#continue-shopping");
+        const addToCartButtons = $$(".add-to-cart");
 
         let cart = [];
 
-        function toggleCart(){
-          const active = cartPanel.classList.toggle('active');
-          overlay.classList.toggle('active', active);
-          cartPanel.setAttribute('aria-hidden', !active);
-          overlay.setAttribute('aria-hidden', !active);
+        function toggleCart() {
+          const active = cartPanel.classList.toggle("active");
+          overlay.classList.toggle("active", active);
+          cartPanel.setAttribute("aria-hidden", !active);
+          overlay.setAttribute("aria-hidden", !active);
         }
 
-        if(cartIcon) cartIcon.addEventListener('click', toggleCart);
-        if(cartClose) cartClose.addEventListener('click', toggleCart);
-        if(overlay) overlay.addEventListener('click', toggleCart);
-        if(continueShopping) continueShopping.addEventListener('click', toggleCart);
+        if (cartIcon) cartIcon.addEventListener("click", toggleCart);
+        if (cartClose) cartClose.addEventListener("click", toggleCart);
+        if (overlay) overlay.addEventListener("click", toggleCart);
+        if (continueShopping)
+          continueShopping.addEventListener("click", toggleCart);
 
-        function updateCartUI(){
-          cartItemsContainer.innerHTML = '';
-          if(cart.length === 0){
-            cartItemsContainer.innerHTML = '<p style="text-align:center;color:var(--gris-moyen);padding:40px 0">Votre panier est vide</p>';
-            cartCountEl.textContent = '0';
-            totalAmountEl.textContent = '0 FCFA';
+        function updateCartUI() {
+          cartItemsContainer.innerHTML = "";
+          if (cart.length === 0) {
+            cartItemsContainer.innerHTML =
+              '<p style="text-align:center;color:var(--gris-moyen);padding:40px 0">Votre panier est vide</p>';
+            cartCountEl.textContent = "0";
+            totalAmountEl.textContent = "0 FCFA";
             return;
           }
           let total = 0;
           let count = 0;
-          cart.forEach(item => {
+          cart.forEach((item) => {
             total += item.quantity * item.price;
             count += item.quantity;
-            const div = document.createElement('div');
-            div.className = 'cart-item';
+            const div = document.createElement("div");
+            div.className = "cart-item";
             div.innerHTML = `
-              <div class="cart-item-img"><img src="${item.img || 'assets/img/product-' + item.id + '.jpg'}" alt="${item.name}" loading="lazy"></div>
+              <div class="cart-item-img"><img src="${
+                item.img || "assets/img/product-" + item.id + ".jpg"
+              }" alt="${item.name}" loading="lazy"></div>
               <div class="cart-item-details">
                 <h4>${item.name}</h4>
                 <div class="cart-item-price">${item.price.toLocaleString()} FCFA</div>
                 <div class="cart-item-quantity" style="margin-top:8px;display:flex;align-items:center;gap:8px">
-                  <button class="decrease" data-id="${item.id}" style="background:var(--gris-clair);border:none;width:32px;height:32px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center">-</button>
-                  <input value="${item.quantity}" readonly style="width:40px;text-align:center;border:1px solid var(--gris-clair);padding:6px;border-radius:6px;background:#fff;font-weight:600">
-                  <button class="increase" data-id="${item.id}" style="background:var(--gris-clair);border:none;width:32px;height:32px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center">+</button>
-                  <button class="cart-item-remove" data-id="${item.id}" style="margin-left:8px;background:none;border:none;color:var(--orange-chaud);cursor:pointer;font-size:16px"><i class="fas fa-trash"></i></button>
+                  <button class="decrease" data-id="${
+                    item.id
+                  }" style="background:var(--gris-clair);border:none;width:32px;height:32px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center">-</button>
+                  <input value="${
+                    item.quantity
+                  }" readonly style="width:40px;text-align:center;border:1px solid var(--gris-clair);padding:6px;border-radius:6px;background:#fff;font-weight:600">
+                  <button class="increase" data-id="${
+                    item.id
+                  }" style="background:var(--gris-clair);border:none;width:32px;height:32px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center">+</button>
+                  <button class="cart-item-remove" data-id="${
+                    item.id
+                  }" style="margin-left:8px;background:none;border:none;color:var(--orange-chaud);cursor:pointer;font-size:16px"><i class="fas fa-trash"></i></button>
                 </div>
               </div>
             `;
@@ -2464,126 +2733,145 @@
           totalAmountEl.textContent = `${total.toLocaleString()} FCFA`;
 
           // attach listeners
-          $$('.decrease').forEach(btn => btn.addEventListener('click', e => { changeQuantity(e.target.dataset.id, -1); }));
-          $$('.increase').forEach(btn => btn.addEventListener('click', e => { changeQuantity(e.target.dataset.id, +1); }));
-          $$('.cart-item-remove').forEach(btn => btn.addEventListener('click', e => { removeFromCart(e.target.closest('button').dataset.id); }));
+          $$(".decrease").forEach((btn) =>
+            btn.addEventListener("click", (e) => {
+              changeQuantity(e.target.dataset.id, -1);
+            })
+          );
+          $$(".increase").forEach((btn) =>
+            btn.addEventListener("click", (e) => {
+              changeQuantity(e.target.dataset.id, +1);
+            })
+          );
+          $$(".cart-item-remove").forEach((btn) =>
+            btn.addEventListener("click", (e) => {
+              removeFromCart(e.target.closest("button").dataset.id);
+            })
+          );
         }
 
-        function addToCart(id, name, price, quantity=1){
-          const existing = cart.find(i => i.id === id);
-          if(existing) existing.quantity += quantity;
-          else cart.push({id, name, price, quantity, img: 'assets/img/product-' + id + '.jpg'});
+        function addToCart(id, name, price, quantity = 1) {
+          const existing = cart.find((i) => i.id === id);
+          if (existing) existing.quantity += quantity;
+          else
+            cart.push({
+              id,
+              name,
+              price,
+              quantity,
+              img: "assets/img/product-" + id + ".jpg",
+            });
           updateCartUI();
           showToast(`${name} ajouté au panier`);
         }
 
-        function changeQuantity(id, delta){
-          const item = cart.find(i => i.id === id);
-          if(!item) return;
+        function changeQuantity(id, delta) {
+          const item = cart.find((i) => i.id === id);
+          if (!item) return;
           item.quantity += delta;
-          if(item.quantity <= 0) cart = cart.filter(i => i.id !== id);
+          if (item.quantity <= 0) cart = cart.filter((i) => i.id !== id);
           updateCartUI();
         }
 
-        function removeFromCart(id){
-          cart = cart.filter(i => i.id !== id);
+        function removeFromCart(id) {
+          cart = cart.filter((i) => i.id !== id);
           updateCartUI();
         }
 
-        addToCartButtons.forEach(btn => {
-          btn.addEventListener('click', () => {
+        addToCartButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
             const id = btn.dataset.id;
             const name = btn.dataset.name;
             const price = parseInt(btn.dataset.price, 10);
-            const qty = parseInt(btn.parentElement.querySelector('input').value || 1, 10);
+            const qty = parseInt(
+              btn.parentElement.querySelector("input").value || 1,
+              10
+            );
             addToCart(id, name, price, qty);
           });
         });
 
         // quantity +/- for product cards
-        $$('.quantity').forEach(q => {
-          const minus = q.querySelector('.minus');
-          const plus = q.querySelector('.plus');
-          const input = q.querySelector('input');
-          minus && minus.addEventListener('click', ()=> { input.value = Math.max(1, parseInt(input.value) - 1); });
-          plus && plus.addEventListener('click', ()=> { input.value = parseInt(input.value) + 1; });
+        $$(".quantity").forEach((q) => {
+          const minus = q.querySelector(".minus");
+          const plus = q.querySelector(".plus");
+          const input = q.querySelector("input");
+          minus &&
+            minus.addEventListener("click", () => {
+              input.value = Math.max(1, parseInt(input.value) - 1);
+            });
+          plus &&
+            plus.addEventListener("click", () => {
+              input.value = parseInt(input.value) + 1;
+            });
         });
 
-        if(checkoutBtn) checkoutBtn.addEventListener('click', ()=> {
-          if(cart.length === 0) return alert('Votre panier est vide');
-          // Simple simulated flow — integrate payment / backend separately
-          alert('Merci pour votre commande ! Nous vous contacterons pour finaliser la livraison/paiement.');
-          cart = [];
-          updateCartUI();
-          toggleCart();
-        });
+        if (checkoutBtn)
+          checkoutBtn.addEventListener("click", () => {
+            if (cart.length === 0) return alert("Votre panier est vide");
+            // Simple simulated flow — integrate payment / backend separately
+            alert(
+              "Merci pour votre commande ! Nous vous contacterons pour finaliser la livraison/paiement."
+            );
+            cart = [];
+            updateCartUI();
+            toggleCart();
+          });
 
         // toast notification
-        function showToast(msg){
-          const el = document.createElement('div');
+        function showToast(msg) {
+          const el = document.createElement("div");
           el.textContent = msg;
-          el.style.cssText = 'position:fixed;top:120px;right:20px;background:var(--vert-vif);color:#fff;padding:16px 20px;border-radius:var(--radius);box-shadow:var(--shadow-hover);z-index:2200;font-weight:600;max-width:300px;opacity:0;transform:translateX(100px);transition:all 0.3s ease';
+          el.style.cssText =
+            "position:fixed;top:120px;right:20px;background:var(--vert-vif);color:#fff;padding:16px 20px;border-radius:var(--radius);box-shadow:var(--shadow-hover);z-index:2200;font-weight:600;max-width:300px;opacity:0;transform:translateX(100px);transition:all 0.3s ease";
           document.body.appendChild(el);
-          setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateX(0)'; }, 10);
-          setTimeout(()=> { el.style.opacity = '0'; el.style.transform = 'translateX(100px)'; }, 2600);
-          setTimeout(()=> el.remove(), 3000);
+          setTimeout(() => {
+            el.style.opacity = "1";
+            el.style.transform = "translateX(0)";
+          }, 10);
+          setTimeout(() => {
+            el.style.opacity = "0";
+            el.style.transform = "translateX(100px)";
+          }, 2600);
+          setTimeout(() => el.remove(), 3000);
         }
 
         // ---------- Contact form ----------
-        const contactForm = $('#contact-form');
-        if(contactForm) contactForm.addEventListener('submit', e => {
-          e.preventDefault();
-          showToast('Message envoyé ! Nous reviendrons vers vous sous 24h.');
-          contactForm.reset();
-        });
+        const contactForm = $("#contact-form");
+        if (contactForm)
+          contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            showToast("Message envoyé ! Nous reviendrons vers vous sous 24h.");
+            contactForm.reset();
+          });
 
         // ---------- Newsletter form ----------
-        const newsletterForm = $('.newsletter-form');
-        if(newsletterForm) newsletterForm.addEventListener('submit', e => {
-          e.preventDefault();
-          showToast('Merci pour votre abonnement à notre newsletter !');
-          newsletterForm.reset();
-        });
-
-        // ---------- IntersectionObserver for smooth reveal ----------
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if(entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              // Add fade-in animation to child elements with delays
-              const children = entry.target.querySelectorAll('.fade-in, .delay-1, .delay-2, .delay-3');
-              children.forEach(child => {
-                child.style.opacity = '0';
-                child.style.transform = 'translateY(30px)';
-                setTimeout(() => {
-                  child.style.transition = 'all 0.6s ease';
-                  child.style.opacity = '1';
-                  child.style.transform = 'translateY(0)';
-                }, 100);
-              });
-            }
+        const newsletterForm = $(".newsletter-form");
+        if (newsletterForm)
+          newsletterForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            showToast("Merci pour votre abonnement à notre newsletter !");
+            newsletterForm.reset();
           });
-        }, {threshold: 0.12});
-        
-        // Observe sections
-        $$('section').forEach(s => io.observe(s));
+
+        // Animation des boutons "Ajouter"
+        document.querySelectorAll(".add-to-cart").forEach((btn) => {
+          btn.addEventListener("click", () => {
+            btn.textContent = "Ajouté ✓";
+            btn.style.background = "var(--vert-vif)";
+            setTimeout(() => {
+              btn.textContent = "Ajouter";
+              btn.style.background =
+                "linear-gradient(135deg, var(--orange-chaud), var(--orange-fonce))";
+            }, 1500);
+          });
+        });
 
         // ---------- Keyboard support for slider navigation ----------
-        document.addEventListener('keydown', e => {
-          if(e.key === 'ArrowLeft') goToSlide(currentSlide-1);
-          if(e.key === 'ArrowRight') goToSlide(currentSlide+1);
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "ArrowLeft") goToSlide(currentSlide - 1);
+          if (e.key === "ArrowRight") goToSlide(currentSlide + 1);
         });
-
-        document.querySelectorAll(".add-to-cart").forEach((btn) => {
-            btn.addEventListener("click", () => {
-              btn.textContent = "Ajouté ✓";
-              btn.style.background = "var(--vert-vif)";
-              setTimeout(() => {
-                btn.textContent = "Ajouter";
-                btn.style.background = "linear-gradient(135deg, var(--orange-chaud), var(--orange-fonce))";
-              }, 1500);
-            });
-          });
 
         // init UI
         updateCartUI();
